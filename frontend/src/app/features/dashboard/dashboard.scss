@@ -1,0 +1,88 @@
+.hero {
+  background: linear-gradient(135deg, #2f4f3f, #0f1a14);
+  border-radius: 12px;
+  padding: 32px;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.hero-text h1 {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.hero-text p {
+  opacity: 0.85;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+.label {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.link {
+  color: #2f4f3f;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th, td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.pending, .status-badge.confirmed { background: #e6f4ea; color: #1e7a3d; }
+.status-badge.shipped { background: #e6ecf7; color: #2952cc; }
+.status-badge.cancelled { background: #fde8e8; color: #c0392b; }

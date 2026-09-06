@@ -1,0 +1,54 @@
+<div class="hero">
+  <div class="hero-text">
+    <h1>Good morning, John</h1>
+    <p>Here's a quick overview of your account.</p>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <p class="label">Total Orders</p>
+    <p class="value">{{ totalOrders }}</p>
+    <a routerLink="/orders" class="link">View orders →</a>
+  </div>
+
+  <div class="stat-card">
+    <p class="label">Pending Orders</p>
+    <p class="value">{{ pendingOrders }}</p>
+    <a routerLink="/orders" class="link">View orders →</a>
+  </div>
+
+  <div class="stat-card">
+    <p class="label">Available Products</p>
+    <p class="value">248</p>
+    <a routerLink="/products" class="link">Browse products →</a>
+  </div>
+</div>
+
+<div class="recent-orders">
+  <div class="section-header">
+    <h2>Recent Orders</h2>
+    <a routerLink="/orders" class="link">View all orders →</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Order #</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of recentOrders; track order.id) {
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.createdAt | date: 'yyyy-MM-dd' }}</td>
+          <td><span class="status-badge" [class]="order.status">{{ order.status }}</span></td>
+          <td>{{ order.quantity * 100 | currency: 'ZAR' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
