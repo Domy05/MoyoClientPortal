@@ -1,0 +1,16 @@
+frontend/src/app/features/auth/login/login.html
+  h_0aff3b71f739b1 1-102
+frontend/src/app/features/auth/login/login.scss
+  h_0aff3b71f739b1 1-405
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ad150db794003f838bfb5e853b23dd2e7134516b",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
