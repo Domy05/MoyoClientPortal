@@ -1,0 +1,17 @@
+frontend/tsconfig.spec.json
+  h_0aff3b71f739b1 7
+  h_0aff3b71f739b1 16
+.github/workflows/frontend-ci.yml
+  h_0aff3b71f739b1 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "d163866a73787fc390af154cc4cf312001a45879",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
