@@ -1,0 +1,14 @@
+frontend/src/app/features/dashboard/dashboard.spec.ts
+  h_0aff3b71f739b1 1,19,24,28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "46cf6546bf1721638d33d45937f2d61e7a36ae02",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
