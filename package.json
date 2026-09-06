@@ -1,0 +1,17 @@
+{
+  "name": "moyoclientportal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+"scripts": {
+  "dev:frontend": "npm --prefix frontend run start",
+  "dev:backend": "dotnet watch run --project backend",
+  "dev": "concurrently -n FRONTEND,BACKEND -c blue,green \"npm run dev:frontend\" \"npm run dev:backend\""
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.4"
+  }
+}
