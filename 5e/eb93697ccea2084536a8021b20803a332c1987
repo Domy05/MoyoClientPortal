@@ -1,0 +1,22 @@
+frontend/src/app/app.routes.ts
+  h_0aff3b71f739b1 9-10
+frontend/src/app/features/dashboard/dashboard.spec.ts
+  h_0aff3b71f739b1 1-27
+frontend/src/app/features/dashboard/dashboard.ts
+  h_0aff3b71f739b1 1-28
+frontend/src/app/features/dashboard/dashboard.html
+  h_0aff3b71f739b1 1-54
+frontend/src/app/features/dashboard/dashboard.scss
+  h_0aff3b71f739b1 1-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5eeb93697ccea2084536a8021b20803a332c1987",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
