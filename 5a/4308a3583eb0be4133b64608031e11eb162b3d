@@ -1,0 +1,180 @@
+package.json
+  h_0aff3b71f739b1 1-17
+.github/workflows/frontend-ci.yml
+  h_0aff3b71f739b1 1-22
+.github/workflows/backend-ci.yml
+  h_0aff3b71f739b1 1-20
+backend/ClientPortal.Api.csproj
+  h_0aff3b71f739b1 1-13
+backend/ClientPortal.Api.http
+  h_0aff3b71f739b1 1-6
+backend/Program.cs
+  h_0aff3b71f739b1 1-41
+backend/Properties/launchSettings.json
+  h_0aff3b71f739b1 1-23
+backend/appsettings.Development.json
+  h_0aff3b71f739b1 1-8
+backend/appsettings.json
+  h_0aff3b71f739b1 1-9
+backend/bin/Debug/net10.0/ClientPortal.Api.deps.json
+  h_0aff3b71f739b1 1-59
+backend/bin/Debug/net10.0/ClientPortal.Api.runtimeconfig.json
+  h_0aff3b71f739b1 1-19
+backend/bin/Debug/net10.0/ClientPortal.Api.staticwebassets.endpoints.json
+  h_0aff3b71f739b1 1
+backend/bin/Debug/net10.0/appsettings.Development.json
+  h_0aff3b71f739b1 1-8
+backend/bin/Debug/net10.0/appsettings.json
+  h_0aff3b71f739b1 1-9
+backend/obj/ClientPortal.Api.csproj.nuget.dgspec.json
+  h_0aff3b71f739b1 1-490
+backend/obj/ClientPortal.Api.csproj.nuget.g.props
+  h_0aff3b71f739b1 1-15
+backend/obj/ClientPortal.Api.csproj.nuget.g.targets
+  h_0aff3b71f739b1 1-6
+backend/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+  h_0aff3b71f739b1 1-4
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfo.cs
+  h_0aff3b71f739b1 1-22
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfoInputs.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.GeneratedMSBuildEditorConfig.editorconfig
+  h_0aff3b71f739b1 1-23
+backend/obj/Debug/net10.0/ClientPortal.Api.GlobalUsings.g.cs
+  h_0aff3b71f739b1 1-17
+backend/obj/Debug/net10.0/ClientPortal.Api.MvcApplicationPartsAssemblyInfo.cs
+  h_0aff3b71f739b1 1-16
+backend/obj/Debug/net10.0/ClientPortal.Api.csproj.CoreCompileInputs.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.csproj.FileListAbsolute.txt
+  h_0aff3b71f739b1 1-34
+backend/obj/Debug/net10.0/ClientPortal.Api.genruntimeconfig.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.sourcelink.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rpswa.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/staticwebassets.build.endpoints.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/staticwebassets.build.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/staticwebassets.build.json.cache
+  h_0aff3b71f739b1 1
+backend/obj/project.assets.json
+  h_0aff3b71f739b1 1-582
+backend/obj/project.nuget.cache
+  h_0aff3b71f739b1 1-24
+frontend/.editorconfig
+  h_0aff3b71f739b1 1-17
+frontend/.gitignore
+  h_0aff3b71f739b1 1-44
+frontend/.prettierrc
+  h_0aff3b71f739b1 1-12
+frontend/.vscode/extensions.json
+  h_0aff3b71f739b1 1-4
+frontend/.vscode/launch.json
+  h_0aff3b71f739b1 1-20
+frontend/.vscode/mcp.json
+  h_0aff3b71f739b1 1-9
+frontend/.vscode/tasks.json
+  h_0aff3b71f739b1 1-42
+frontend/README.md
+  h_0aff3b71f739b1 1-59
+frontend/angular.json
+  h_0aff3b71f739b1 1-78
+frontend/package-lock.json
+  h_0aff3b71f739b1 1-8618
+frontend/package.json
+  h_0aff3b71f739b1 1-32
+frontend/src/app/app.config.ts
+  h_0aff3b71f739b1 1-11
+frontend/src/app/app.html
+  h_0aff3b71f739b1 1-344
+frontend/src/app/app.routes.ts
+  h_0aff3b71f739b1 1-3
+frontend/src/app/app.spec.ts
+  h_0aff3b71f739b1 1-23
+frontend/src/app/app.ts
+  h_0aff3b71f739b1 1-12
+frontend/src/app/backend/ClientPortal.Api.csproj
+  h_0aff3b71f739b1 1-13
+frontend/src/app/backend/ClientPortal.Api.http
+  h_0aff3b71f739b1 1-6
+frontend/src/app/backend/Program.cs
+  h_0aff3b71f739b1 1-41
+frontend/src/app/backend/Properties/launchSettings.json
+  h_0aff3b71f739b1 1-23
+frontend/src/app/backend/appsettings.Development.json
+  h_0aff3b71f739b1 1-8
+frontend/src/app/backend/appsettings.json
+  h_0aff3b71f739b1 1-9
+frontend/src/app/backend/obj/ClientPortal.Api.csproj.nuget.dgspec.json
+  h_0aff3b71f739b1 1-490
+frontend/src/app/backend/obj/ClientPortal.Api.csproj.nuget.g.props
+  h_0aff3b71f739b1 1-15
+frontend/src/app/backend/obj/ClientPortal.Api.csproj.nuget.g.targets
+  h_0aff3b71f739b1 1-6
+frontend/src/app/backend/obj/project.assets.json
+  h_0aff3b71f739b1 1-582
+frontend/src/app/backend/obj/project.nuget.cache
+  h_0aff3b71f739b1 1-24
+frontend/src/app/features/auth/login/login.html
+  h_0aff3b71f739b1 1
+frontend/src/app/features/auth/login/login.spec.ts
+  h_0aff3b71f739b1 1-22
+frontend/src/app/features/auth/login/login.ts
+  h_0aff3b71f739b1 1-9
+frontend/src/app/features/orders/order-form/order-form.html
+  h_0aff3b71f739b1 1
+frontend/src/app/features/orders/order-form/order-form.spec.ts
+  h_0aff3b71f739b1 1-22
+frontend/src/app/features/orders/order-form/order-form.ts
+  h_0aff3b71f739b1 1-9
+frontend/src/app/features/orders/order-list/order-list.html
+  h_0aff3b71f739b1 1
+frontend/src/app/features/orders/order-list/order-list.spec.ts
+  h_0aff3b71f739b1 1-22
+frontend/src/app/features/orders/order-list/order-list.ts
+  h_0aff3b71f739b1 1-9
+frontend/src/app/features/products/product-list/product-list.html
+  h_0aff3b71f739b1 1
+frontend/src/app/features/products/product-list/product-list.spec.ts
+  h_0aff3b71f739b1 1-22
+frontend/src/app/features/products/product-list/product-list.ts
+  h_0aff3b71f739b1 1-9
+frontend/src/app/shared/layout/layout.html
+  h_0aff3b71f739b1 1
+frontend/src/app/shared/layout/layout.spec.ts
+  h_0aff3b71f739b1 1-22
+frontend/src/app/shared/layout/layout.ts
+  h_0aff3b71f739b1 1-9
+frontend/src/index.html
+  h_0aff3b71f739b1 1-13
+frontend/src/main.ts
+  h_0aff3b71f739b1 1-6
+frontend/src/styles.scss
+  h_0aff3b71f739b1 1
+frontend/tsconfig.app.json
+  h_0aff3b71f739b1 1-15
+frontend/tsconfig.json
+  h_0aff3b71f739b1 1-33
+frontend/tsconfig.spec.json
+  h_0aff3b71f739b1 1-15
+package-lock.json
+  h_0aff3b71f739b1 1-330
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5a4308a3583eb0be4133b64608031e11eb162b3d",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
