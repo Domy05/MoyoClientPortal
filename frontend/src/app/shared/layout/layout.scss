@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+}
+
+.active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.page-content {
+  padding: 24px;
+}
