@@ -1,0 +1,63 @@
+frontend/src/app/core/services/product.service.ts
+  h_0aff3b71f739b1 1-15
+frontend/src/app/features/orders/order-list/order-list.ts
+  h_0aff3b71f739b1 1-8,12-13,17-29
+  h_0aff3b71f739b1 30
+frontend/src/app/app.routes.ts
+  h_0aff3b71f739b1 4-15
+  h_0aff3b71f739b1 3,16
+frontend/tsconfig.app.json
+  h_0aff3b71f739b1 7
+  h_0aff3b71f739b1 16
+frontend/src/app/features/products/product-list/product-list.html
+  h_0aff3b71f739b1 1-23
+frontend/src/app/features/orders/order-form/order-form.html
+  h_0aff3b71f739b1 1-21
+frontend/src/app/core/services/order.service.ts
+  h_0aff3b71f739b1 1-33
+frontend/src/app/shared/layout/layout.ts
+  h_0aff3b71f739b1 2-4,8-9
+  h_0aff3b71f739b1 13
+frontend/src/app/features/products/product-list/product-list.ts
+  h_0aff3b71f739b1 1-6,10-11,15-27
+  h_0aff3b71f739b1 28
+frontend/src/app/core/models/product.model.ts
+  h_0aff3b71f739b1 1-6
+frontend/src/app/core/models/order.model.ts
+  h_0aff3b71f739b1 1-7
+frontend/src/app/app.html
+  h_0aff3b71f739b1 1
+frontend/src/app/features/auth/login/login.ts
+  h_0aff3b71f739b1 1-6,10-11,16-27
+  h_0aff3b71f739b1 15,28
+frontend/src/app/features/orders/order-form/order-form.ts
+  h_0aff3b71f739b1 1-11,15,17-22,27-53
+  h_0aff3b71f739b1 16,23,54
+frontend/src/app/shared/layout/layout.html
+  h_0aff3b71f739b1 1-11
+frontend/src/app/features/orders/order-list/order-list.html
+  h_0aff3b71f739b1 1-38
+frontend/src/app/features/auth/login/login.html
+  h_0aff3b71f739b1 1-18
+frontend/src/app/shared/layout/layout.scss
+  h_0aff3b71f739b1 1-22
+frontend/package-lock.json
+  h_0aff3b71f739b1 11,16,428-443,584-600
+frontend/package.json
+  h_0aff3b71f739b1 14,19,34
+frontend/src/index.html
+  h_0aff3b71f739b1 3-19
+frontend/src/styles.scss
+  h_0aff3b71f739b1 1-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "c532f3de79e59ead11e7a96e5339dcd4d066ee0b",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
