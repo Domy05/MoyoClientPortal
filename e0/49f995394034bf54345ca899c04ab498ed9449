@@ -1,0 +1,20 @@
+frontend/src/app/shared/layout/layout.spec.ts
+  h_0aff3b71f739b1 1-2,9,14-15
+  h_0aff3b71f739b1 18
+frontend/src/app/features/orders/order-list/order-list.spec.ts
+  h_0aff3b71f739b1 1-2,9,14-15
+  h_0aff3b71f739b1 18
+frontend/src/app/app.spec.ts
+  h_0aff3b71f739b1 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "e049f995394034bf54345ca899c04ab498ed9449",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
