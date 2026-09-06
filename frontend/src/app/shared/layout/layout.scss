@@ -1,22 +1,95 @@
-.navbar {
+.app-shell {
   display: flex;
-  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #16281f;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 18px;
 }
 
 .brand {
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.leaf-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.brand-tagline {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.65;
 }
 
 nav {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
 }
 
-.active {
-  font-weight: 700;
-  text-decoration: underline;
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 0.92rem;
 }
 
-.page-content {
-  padding: 24px;
+nav a svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+nav a.active,
+nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 11px 14px;
+  width: 100%;
+  text-align: left;
+}
+
+.logout svg {
+  width: 18px;
+  height: 18px;
+}
+
+.main {
+  flex: 1;
+  padding: 32px 40px;
+  background: #f7f6f3;
+  overflow-y: auto;
 }
