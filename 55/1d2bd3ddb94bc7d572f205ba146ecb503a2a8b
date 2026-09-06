@@ -1,0 +1,24 @@
+frontend/src/app/shared/layout/layout.scss
+  h_0aff3b71f739b1 1,3,6-12,16-37,42-44,47-87,90-94
+  h_0aff3b71f739b1 4-5
+frontend/src/app/features/auth/login/login.ts
+  h_0aff3b71f739b1 4,9,16,19,21,26-27
+frontend/src/app/core/services/auth.service.ts
+  h_0aff3b71f739b1 1-14
+frontend/src/app/shared/layout/layout.ts
+  h_0aff3b71f739b1 1-3,13-23
+  h_0aff3b71f739b1 8,12,24
+frontend/src/app/shared/layout/layout.html
+  h_0aff3b71f739b1 1-7,9-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "551d2bd3ddb94bc7d572f205ba146ecb503a2a8b",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
