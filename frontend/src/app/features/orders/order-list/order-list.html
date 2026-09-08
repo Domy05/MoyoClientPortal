@@ -1,38 +1,228 @@
-<div class="header">
-  <h2>Orders</h2>
-  <a mat-raised-button color="primary" routerLink="/orders/new">New Order</a>
+<div class="order-page">
+
+  <!-- Page heading -->
+  <div class="page-heading">
+
+    <h1>My Orders</h1>
+
+    <p>
+      View and track your orders.
+    </p>
+
+  </div>
+
+
+  <!-- Filters -->
+  <div class="filters">
+
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="selectedStatus === 'all'"
+      (click)="selectedStatus = 'all'"
+    >
+      All orders
+    </button>
+
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="selectedStatus === 'processing'"
+      (click)="selectedStatus = 'processing'"
+    >
+      Processing
+    </button>
+
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="selectedStatus === 'shipped'"
+      (click)="selectedStatus = 'shipped'"
+    >
+      Shipped
+    </button>
+
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="selectedStatus === 'delivered'"
+      (click)="selectedStatus = 'delivered'"
+    >
+      Delivered
+    </button>
+
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="selectedStatus === 'cancelled'"
+      (click)="selectedStatus = 'cancelled'"
+    >
+      Cancelled
+    </button>
+
+  </div>
+
+
+  <!-- Orders table -->
+  <div class="orders-card">
+
+    <!-- Table header -->
+    <div class="table-row table-header">
+
+      <div>Order #</div>
+
+      <div>Date</div>
+
+      <div>Total</div>
+
+      <div>Status</div>
+
+      <div>Actions</div>
+
+      <div></div>
+
+    </div>
+
+
+    <!-- Orders -->
+    @for (order of filteredOrders; track order.id) {
+
+      <div class="table-row order-row">
+
+        <!-- Order number -->
+        <div class="order-number">
+          {{ order.orderNumber }}
+        </div>
+
+
+        <!-- Date -->
+        <div class="order-date">
+          {{ order.date }}
+        </div>
+
+
+        <!-- Total -->
+        <div class="order-total">
+          R {{ order.total.toFixed(2) }}
+        </div>
+
+
+        <!-- Status -->
+        <div>
+
+          <span
+            class="status-badge"
+            [class.processing]="order.status === 'processing'"
+            [class.shipped]="order.status === 'shipped'"
+            [class.delivered]="order.status === 'delivered'"
+            [class.cancelled]="order.status === 'cancelled'"
+          >
+            {{ getStatusLabel(order.status) }}
+          </span>
+
+        </div>
+
+
+        <!-- Actions -->
+        <div class="action-cell">
+
+          <button
+            type="button"
+            class="view-button"
+            (click)="viewOrder(order)"
+          >
+            View
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+
+    <!-- Empty state -->
+    @if (filteredOrders.length === 0) {
+
+      <div class="empty-state">
+        No orders found.
+      </div>
+
+    }
+
+  </div>
+
+
+  <!-- Pagination -->
+  <div class="pagination">
+
+    <!-- Previous -->
+    <button
+      type="button"
+      class="pagination-button"
+      [disabled]="currentPage === 1"
+      (click)="previousPage()"
+      aria-label="Previous page"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M15 18l-6-6 6-6"></path>
+      </svg>
+
+    </button>
+
+
+    <!-- Page 1 -->
+    <button
+      type="button"
+      class="pagination-button active"
+    >
+      1
+    </button>
+
+
+    <!-- Page 2 -->
+    <button
+      type="button"
+      class="pagination-button"
+    >
+      2
+    </button>
+
+
+    <!-- Page 3 -->
+    <button
+      type="button"
+      class="pagination-button"
+    >
+      3
+    </button>
+
+
+    <!-- Next -->
+    <button
+      type="button"
+      class="pagination-button"
+      (click)="nextPage()"
+      aria-label="Next page"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M9 6l6 6-6 6"></path>
+      </svg>
+
+    </button>
+
+  </div>
+
 </div>
-
-@if (loading) {
-  <mat-spinner diameter="40"></mat-spinner>
-} @else {
-  <table mat-table [dataSource]="orders" class="mat-elevation-z2">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Order ID</th>
-      <td mat-cell *matCellDef="let o">{{ o.id }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="productId">
-      <th mat-header-cell *matHeaderCellDef>Product</th>
-      <td mat-cell *matCellDef="let o">{{ o.productId }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef>Qty</th>
-      <td mat-cell *matCellDef="let o">{{ o.quantity }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let o">{{ o.status }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef>Created</th>
-      <td mat-cell *matCellDef="let o">{{ o.createdAt | date: 'short' }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-}

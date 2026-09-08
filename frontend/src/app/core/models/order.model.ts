@@ -1,7 +1,25 @@
+export type OrderStatus =
+  | 'pending'
+  | 'confirmed'
+  | 'shipped'
+  | 'delivered'
+  | 'cancelled';
+
+
 export interface Order {
+
   id: string;
+
+  orderNumber: string;
+
   productId: string;
+
   quantity: number;
-  status: 'pending' | 'confirmed' | 'shipped' | 'cancelled';
+
+  total: number;
+
+  status: OrderStatus;
+
   createdAt: string;
+
 }

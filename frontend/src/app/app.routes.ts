@@ -4,15 +4,20 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./features/auth/login/login').then((m) => m.Login),
+      import('./features/auth/login/login').then(
+        (m) => m.Login
+      ),
   },
 
   {
     path: '',
     loadComponent: () =>
-      import('./shared/layout/layout').then((m) => m.Layout),
+      import('./shared/layout/layout').then(
+        (m) => m.Layout
+      ),
 
     children: [
+
       {
         path: '',
         redirectTo: 'dashboard',
@@ -22,7 +27,9 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./features/dashboard/dashboard').then((m) => m.Dashboard),
+          import('./features/dashboard/dashboard').then(
+            (m) => m.Dashboard
+          ),
       },
 
       {
@@ -41,6 +48,16 @@ export const routes: Routes = [
           ),
       },
 
+      // Cart
+      {
+        path: 'cart',
+        loadComponent: () =>
+          import('./features/orders/cart/cart').then(
+            (m) => m.Cart
+          ),
+      },
+
+      // Orders list
       {
         path: 'orders',
         loadComponent: () =>
@@ -49,11 +66,12 @@ export const routes: Routes = [
           ),
       },
 
+      // Individual order
       {
-        path: 'orders/new',
+        path: 'orders/:id',
         loadComponent: () =>
-          import('./features/orders/order-form/order-form').then(
-            (m) => m.OrderForm
+          import('./features/orders/order-details/order-details').then(
+            (m) => m.OrderDetails
           ),
       },
     ],

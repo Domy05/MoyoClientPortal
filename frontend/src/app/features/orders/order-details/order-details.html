@@ -1,0 +1,282 @@
+@if (loading()) {
+
+  <p class="loading-text">
+    Loading order...
+  </p>
+
+} @else if (order(); as o) {
+
+  <div class="order-details-page">
+
+    <!-- Back -->
+    <button
+      type="button"
+      class="back-link"
+      (click)="goBack()"
+    >
+      <span>←</span>
+      Back to My Orders
+    </button>
+
+
+    <!-- Heading -->
+    <div class="page-heading">
+
+      <h1>
+        Order ORD-{{ o.id }}
+      </h1>
+
+      <p>
+        Placed on {{ o.createdAt | date:'yyyy-MM-dd' }}
+        · R {{ getTotal().toFixed(2) }}
+      </p>
+
+    </div>
+
+
+    <!-- Order status -->
+    <div class="status-card">
+
+      <!-- Pending -->
+      <div
+        class="status-step"
+        [class.completed]="getStatusIndex() >= 0"
+        [class.current]="getStatusIndex() === 0"
+      >
+
+        <div class="status-circle">
+          {{ getStatusIndex() > 0 ? '✓' : '1' }}
+        </div>
+
+        <div class="status-info">
+          <strong>Pending</strong>
+          <span>Order received</span>
+        </div>
+
+      </div>
+
+
+      <div
+        class="status-line"
+        [class.completed]="getStatusIndex() >= 1"
+      ></div>
+
+
+      <!-- Processing -->
+      <div
+        class="status-step"
+        [class.completed]="getStatusIndex() >= 1"
+        [class.current]="getStatusIndex() === 1"
+      >
+
+        <div class="status-circle">
+          @if (getStatusIndex() > 1) {
+            ✓
+          } @else {
+            2
+          }
+        </div>
+
+        <div class="status-info">
+          <strong>Processing</strong>
+          <span>Being prepared</span>
+        </div>
+
+      </div>
+
+
+      <div
+        class="status-line"
+        [class.completed]="getStatusIndex() >= 2"
+      ></div>
+
+
+      <!-- Shipped -->
+      <div
+        class="status-step"
+        [class.completed]="getStatusIndex() >= 2"
+        [class.current]="getStatusIndex() === 2"
+      >
+
+        <div class="status-circle">
+          @if (getStatusIndex() > 2) {
+            ✓
+          } @else {
+            3
+          }
+        </div>
+
+        <div class="status-info">
+          <strong>Shipped</strong>
+          <span>On its way</span>
+        </div>
+
+      </div>
+
+
+      <div
+        class="status-line"
+        [class.completed]="getStatusIndex() >= 3"
+      ></div>
+
+
+      <!-- Delivered -->
+      <div
+        class="status-step"
+        [class.completed]="false"
+      >
+
+        <div class="status-circle">
+          4
+        </div>
+
+        <div class="status-info">
+          <strong>Delivered</strong>
+          <span>Order received</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Main content -->
+    <div class="order-content">
+
+
+      <!-- Order Items -->
+      <section class="items-section">
+
+        <h2>
+          Order Items
+        </h2>
+
+
+        <div class="items-card">
+
+          <!-- Header -->
+          <div class="items-header">
+
+            <div>Product</div>
+
+            <div>Price</div>
+
+            <div>Quantity</div>
+
+            <div>Total</div>
+
+          </div>
+
+
+          <!-- Product -->
+          @if (product(); as p) {
+
+            <div class="item-row">
+
+              <div class="product-info">
+
+                <div class="product-image">
+
+                  <img
+                    [src]="p.image"
+                    [alt]="p.name"
+                  />
+
+                </div>
+
+                <span>
+                  {{ p.name }}
+                </span>
+
+              </div>
+
+
+              <div class="item-price">
+                R {{ p.price.toFixed(2) }}
+              </div>
+
+
+              <div class="item-quantity">
+                {{ o.quantity }}
+              </div>
+
+
+              <div class="item-total">
+                R {{ getSubtotal().toFixed(2) }}
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- Order Summary -->
+      <aside class="summary-card">
+
+        <h2>
+          Order Summary
+        </h2>
+
+
+        <div class="summary-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <strong>
+            R {{ getSubtotal().toFixed(2) }}
+          </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>
+            VAT (15%)
+          </span>
+
+          <strong>
+            R {{ getVat().toFixed(2) }}
+          </strong>
+
+        </div>
+
+
+        <div class="summary-row total-row">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            R {{ getTotal().toFixed(2) }}
+          </strong>
+
+        </div>
+
+
+        @if (o.status !== 'cancelled') {
+
+          <button
+            type="button"
+            class="reorder-button"
+            (click)="reorder()"
+          >
+            Reorder
+          </button>
+
+        }
+
+      </aside>
+
+    </div>
+
+  </div>
+
+}
