@@ -1,0 +1,18 @@
+frontend/src/app/features/dashboard/dashboard.scss
+  h_0aff3b71f739b1 7,20,25,32-34,38,41,50,53-76,98-102,115-116,118,124
+  h_0aff3b71f739b1 103-104
+frontend/src/app/features/dashboard/dashboard.html
+  h_0aff3b71f739b1 12-19,21-22,26-33,35-36,40-46,50
+  h_0aff3b71f739b1 20,34,47-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "bb760fb0661598f4603e9ba53876c4d11d57c9a5",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
