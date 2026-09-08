@@ -1,0 +1,39 @@
+frontend/src/app/features/products/product-list/product-list.html
+  h_0aff3b71f739b1 1-11,13-19,21-82
+  h_0aff3b71f739b1 12
+frontend/src/app/features/products/product-detail/product-detail.ts
+  h_0aff3b71f739b1 1-69
+frontend/src/app/core/models/product.model.ts
+  h_0aff3b71f739b1 6-13
+frontend/src/app/features/products/product-detail/product-detail.scss
+  h_0aff3b71f739b1 1-186
+frontend/src/app/features/products/product-detail/product-detail.spec.ts
+  h_0aff3b71f739b1 1-36
+frontend/src/app/app.routes.ts
+  h_0aff3b71f739b1 5-9,13-14,19,21,25,27,32-41,43,47-49,51,56-57,61-64
+  h_0aff3b71f739b1 4,12,16-18,20,22-24,26,28-31,42,44-46,50,52-55,58,65
+frontend/src/app/features/products/product-list/product-list.scss
+  h_0aff3b71f739b1 1-151
+frontend/src/app/core/services/product.service.ts
+  h_0aff3b71f739b1 8-22,25-142,151-153
+  h_0aff3b71f739b1 6-7,23-24,143,154
+frontend/src/app/features/products/product-detail/product-detail.html
+  h_0aff3b71f739b1 1-186
+frontend/src/app/features/products/product-list/product-list.spec.ts
+  h_0aff3b71f739b1 12-13,16-35
+  h_0aff3b71f739b1 1,36-37
+frontend/src/app/features/products/product-list/product-list.ts
+  h_0aff3b71f739b1 1,3,6,11,16-17,19-23,25,27-31,35-39,41-65
+  h_0aff3b71f739b1 24,26,40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "23feef7be11c210db70df7248714891ba6d43fd3",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
