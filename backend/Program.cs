@@ -27,6 +27,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();   // <-- 'app' must be declared here first
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ClientPortalDbContext>();

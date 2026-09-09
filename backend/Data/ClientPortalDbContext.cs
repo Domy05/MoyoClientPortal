@@ -33,7 +33,7 @@ public partial class ClientPortalDbContext : DbContext
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(sysutcdatetime())");
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
-                .HasDefaultValue("Pending");
+                .HasDefaultValue("pending");
         });
 
         modelBuilder.Entity<OrderItem>(entity =>

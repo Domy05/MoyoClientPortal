@@ -36,7 +36,7 @@ public static class DbSeeder
         context.Products.AddRange(products);
         context.SaveChanges(); // save first so products have real Ids
 
-        var statuses = new[] { "Pending", "Confirmed", "Shipped", "Cancelled" };
+        var statuses = new[] { "pending", "confirmed", "shipped", "cancelled" };
         var orders = new List<Order>();
 
         for (int i = 0; i < 20; i++)
