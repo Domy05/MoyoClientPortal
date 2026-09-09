@@ -1,379 +1,410 @@
 .loading-text {
-  color: #6b7280;
-  text-align: center;
-  padding: 40px 20px;
+color: #6b7280;
+text-align: center;
+padding: 40px 20px;
 }
 
 /* =========================================
-   PAGE HEADER
+PAGE HEADER
 ========================================= */
 
 .page-header {
-  margin-bottom: 24px;
+margin-bottom: 24px;
 }
 
 .page-header h1 {
-  margin: 0 0 8px;
-  font-size: 1.8rem;
-  color: #16281f;
+margin: 0 0 8px;
+font-size: 1.8rem;
+color: #16281f;
 }
 
 .page-header p {
-  margin: 0;
-  color: #6b7280;
-  line-height: 1.5;
+margin: 0;
+color: #6b7280;
+line-height: 1.5;
 }
 
 /* =========================================
-   FILTERS
+FILTERS
 ========================================= */
 
 .filter-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 28px;
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin-bottom: 28px;
 }
 
 .pill {
-  border: 1px solid #d9d0b8;
-  background: var(--bone, #f8f5ed);
-  color: #16281f;
-  border-radius: 999px;
-  padding: 9px 16px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
+border: 1px solid #d9d0b8;
+background: var(--bone, #f8f5ed);
+color: #16281f;
+border-radius: 999px;
+padding: 9px 16px;
+font-size: 0.9rem;
+cursor: pointer;
+transition:
+background 0.2s ease,
+border-color 0.2s ease,
+color 0.2s ease,
+transform 0.2s ease;
 }
 
 .pill:hover {
-  background: #ece8dc;
-  border-color: #16281f;
+background: #ece8dc;
+border-color: #16281f;
 }
 
 .pill.active {
-  background: #16281f;
-  color: white;
-  border-color: #16281f;
+background: #16281f;
+color: white;
+border-color: #16281f;
 }
 
 /* =========================================
-   PRODUCT GRID
+PRODUCT GRID
 ========================================= */
 
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-  width: 100%;
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 24px;
+width: 100%;
 }
 
 /* =========================================
-   PRODUCT CARD
+PRODUCT CARD
 ========================================= */
 
 .product-card {
-  min-width: 0;
-  overflow: hidden;
-  background: var(--bone, #f8f5ed);
-  border: 1px solid #d9d0b8;
-  border-radius: 12px;
-  cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+min-width: 0;
+overflow: hidden;
+
+background: var(--bone, #f8f5ed);
+
+/* Moyo green border */
+border: 2px solid #000000;
+
+border-radius: 12px;
+cursor: pointer;
+
+transition:
+transform 0.2s ease,
+box-shadow 0.2s ease,
+border-color 0.2s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-3px);
-  border-color: #16281f;
-  box-shadow: 0 8px 20px rgba(22, 40, 31, 0.08);
+transform: translateY(-3px);
+
+border-color: #16281f;
+
+box-shadow:
+0 8px 20px rgba(22, 40, 31, 0.12),
+0 0 0 2px rgba(31, 107, 69, 0.08);
 }
 
 /* =========================================
-   PRODUCT IMAGE
+PRODUCT IMAGE
 ========================================= */
 
 .product-image {
-  display: block;
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  background: #f1eee6;
+display: block;
+width: 100%;
+height: 210px;
+object-fit: cover;
+background: #f1eee6;
 }
 
 /* =========================================
-   PRODUCT INFO
+PRODUCT INFO
 ========================================= */
 
 .product-info {
-  padding: 18px;
+padding: 18px;
 }
 
 .product-info h3 {
-  margin: 0 0 8px;
-  color: #16281f;
-  font-size: 1rem;
-  line-height: 1.35;
+margin: 0 0 8px;
+color: #16281f;
+font-size: 1rem;
+line-height: 1.35;
 }
 
 .price {
-  margin: 0 0 6px;
-  color: #16281f;
-  font-size: 1.1rem;
-  font-weight: 700;
+margin: 0 0 6px;
+color: #16281f;
+font-size: 1.1rem;
+font-weight: 700;
 }
 
 .stock {
-  margin: 0 0 16px;
-  color: #6b7280;
-  font-size: 0.85rem;
+margin: 0 0 16px;
+color: #6b7280;
+font-size: 0.85rem;
 }
 
 /* =========================================
-   QUANTITY + ADD BUTTON
+QUANTITY + ADD BUTTON
 ========================================= */
 
 .quantity-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
+display: flex;
+align-items: center;
+gap: 10px;
+min-width: 0;
 }
 
 .quantity-control {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  overflow: hidden;
-  border: 1px solid #d9d0b8;
-  border-radius: 8px;
-  background: white;
+display: flex;
+align-items: center;
+flex-shrink: 0;
+overflow: hidden;
+
+border: 1px solid #d9d0b8;
+border-radius: 8px;
+background: white;
 }
 
 .quantity-control button {
-  width: 34px;
-  height: 38px;
-  padding: 0;
-  border: none;
-  background: var(--bone, #f8f5ed);
-  color: #16281f;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s ease;
+width: 34px;
+height: 38px;
+padding: 0;
+
+border: none;
+background: var(--bone, #f8f5ed);
+color: #16281f;
+
+font-size: 1rem;
+cursor: pointer;
+
+transition: background 0.2s ease;
 }
 
 .quantity-control button:hover {
-  background: #e9e5da;
+background: #e9e5da;
 }
 
 .quantity-control span {
-  width: 32px;
-  text-align: center;
-  color: #16281f;
-  font-size: 0.9rem;
-  font-weight: 600;
+width: 32px;
+text-align: center;
+color: #16281f;
+font-size: 0.9rem;
+font-weight: 600;
 }
 
 .add-btn {
-  flex: 1;
-  min-width: 0;
-  height: 38px;
-  padding: 0 12px;
-  border: none;
-  border-radius: 8px;
-  background: #16281f;
-  color: white;
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s ease;
+flex: 1;
+min-width: 0;
+height: 38px;
+padding: 0 12px;
+
+border: none;
+border-radius: 8px;
+
+background: #16281f;
+color: white;
+
+font-size: 0.82rem;
+font-weight: 600;
+
+cursor: pointer;
+white-space: nowrap;
+
+transition:
+background 0.2s ease,
+transform 0.2s ease;
 }
 
 .add-btn:hover {
-  background: #0f1f18;
+background: #0f1f18;
+transform: translateY(-1px);
 }
 
 /* =========================================
-   PAGINATION
+PAGINATION
 ========================================= */
 
 .pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 36px;
-  padding: 20px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 20px;
+
+margin-top: 36px;
+padding: 20px 0;
 }
 
 .page-numbers {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
 }
 
 .pagination-btn,
 .page-number {
-  border: 1px solid #d9d0b8;
-  background: white;
-  color: #16281f;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+border: 1px solid #d9d0b8;
+background: white;
+color: #16281f;
+border-radius: 8px;
+
+font-size: 0.9rem;
+cursor: pointer;
+
+transition:
+background 0.2s ease,
+border-color 0.2s ease,
+color 0.2s ease;
 }
 
 .pagination-btn {
-  padding: 10px 16px;
+padding: 10px 16px;
 }
 
 .page-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: 40px;
+height: 40px;
+padding: 0;
 }
 
 .pagination-btn:hover:not(:disabled),
 .page-number:hover {
-  background: #f3f8f5;
-  border-color: #1f6b45;
+background: #f3f8f5;
+border-color: #1f6b45;
 }
 
 .page-number.active {
-  background: #1f6b45;
-  border-color: #1f6b45;
-  color: white;
+background: #1f6b45;
+border-color: #1f6b45;
+color: white;
 }
 
 .pagination-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+opacity: 0.45;
+cursor: not-allowed;
 }
 
 /* =========================================
-   EMPTY PRODUCTS
+EMPTY PRODUCTS
 ========================================= */
 
 .empty-products {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 220px;
-  color: #66756d;
-  text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+
+min-height: 220px;
+
+color: #66756d;
+text-align: center;
 }
 
 /* =========================================
-   TABLET
+TABLET
 ========================================= */
 
 @media (max-width: 1100px) {
-  .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+.product-grid {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 }
 
 /* =========================================
-   SMALL TABLET
+SMALL TABLET
 ========================================= */
 
 @media (max-width: 800px) {
-  .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
+.product-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 18px;
+}
 
-  .product-image {
-    height: 190px;
-  }
+.product-image {
+height: 190px;
+}
 
-  .pagination {
-    gap: 12px;
-  }
+.pagination {
+gap: 12px;
+}
 }
 
 /* =========================================
-   MOBILE
+MOBILE
 ========================================= */
 
 @media (max-width: 550px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+.product-grid {
+grid-template-columns: 1fr;
+gap: 16px;
+}
 
-  .product-image {
-    height: 220px;
-  }
+.product-image {
+height: 220px;
+}
 
-  .filter-pills {
-    gap: 8px;
-  }
+.filter-pills {
+gap: 8px;
+}
 
-  .pill {
-    padding: 8px 13px;
-    font-size: 0.82rem;
-  }
+.pill {
+padding: 8px 13px;
+font-size: 0.82rem;
+}
 
-  .pagination {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
+.pagination {
+flex-wrap: wrap;
+gap: 12px;
+}
 
-  .page-numbers {
-    order: 3;
-    width: 100%;
-  }
+.page-numbers {
+order: 3;
+width: 100%;
+}
 
-  .pagination-btn {
-    padding: 9px 13px;
-    font-size: 0.82rem;
-  }
+.pagination-btn {
+padding: 9px 13px;
+font-size: 0.82rem;
+}
 
-  .page-number {
-    width: 36px;
-    height: 36px;
-  }
+.page-number {
+width: 36px;
+height: 36px;
+}
 }
 
 /* =========================================
-   VERY SMALL MOBILE
+VERY SMALL MOBILE
 ========================================= */
 
 @media (max-width: 380px) {
-  .quantity-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
+.quantity-row {
+flex-direction: column;
+align-items: stretch;
+}
 
-  .quantity-control {
-    justify-content: center;
-  }
+.quantity-control {
+justify-content: center;
+}
 
-  .add-btn {
-    width: 100%;
-  }
+.add-btn {
+width: 100%;
+}
 
-  .pagination-btn {
-    padding: 8px 10px;
-  }
+.pagination-btn {
+padding: 8px 10px;
+}
 
-  .page-numbers {
-    gap: 5px;
-  }
+.page-numbers {
+gap: 5px;
+}
 
-  .page-number {
-    width: 34px;
-    height: 34px;
-  }
+.page-number {
+width: 34px;
+height: 34px;
+}
 }

@@ -91,7 +91,7 @@ nav a:hover {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #f7f6f3;
+  background: #fffefa;
 }
 
 .topbar {
@@ -99,8 +99,8 @@ nav a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 20px 32px;
-  background: #fdfcf9;
-  border-bottom: 1px solid #eee;
+  background: #fffefa;
+  border-bottom: 2px solid #000;
 }
 
 .search-wrap {
@@ -125,6 +125,21 @@ nav a:hover {
   border-radius: 8px;
   font-size: 0.9rem;
   box-sizing: border-box;
+}
+
+.search:disabled {
+  background: #eeeeee;
+  color: #9ca3af;
+  border-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.search:disabled::placeholder {
+  color: #a5a5a5;
+}
+
+.search-disabled .search-icon {
+  color: #b5b5b5;
 }
 
 .user-menu {

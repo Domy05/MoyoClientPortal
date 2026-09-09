@@ -3,9 +3,13 @@ import {
   Router,
   RouterLink,
   RouterLinkActive,
-  RouterOutlet
+  RouterOutlet,
+  NavigationEnd
 } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
 import { AuthService } from '../../core/services/auth.service';
+import { SearchService } from '../../core/services/search.service';
 
 @Component({
   selector: 'app-layout',
@@ -18,6 +22,23 @@ export class Layout {
 
   authService = inject(AuthService);
   private router = inject(Router);
+  searchService = inject(SearchService);
+
+  currentPage: 'products' | 'orders' | 'disabled' = 'disabled';
+
+  constructor() {
+    this.updateSearchState(this.router.url);
+
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe(event => {
+        const navigation = event as NavigationEnd;
+
+        this.updateSearchState(navigation.urlAfterRedirects);
+      });
+  }
 
   get client() {
     return this.authService.getClient();
@@ -46,7 +67,57 @@ export class Layout {
     return `${client.firstName} ${client.lastName}`;
   }
 
-  onAuthClick() {
+  get searchEnabled(): boolean {
+    return this.currentPage !== 'disabled';
+  }
+
+  get searchPlaceholder(): string {
+    if (this.currentPage === 'products') {
+      return 'Search products...';
+    }
+
+    if (this.currentPage === 'orders') {
+      return 'Search orders...';
+    }
+
+    return 'Search unavailable';
+  }
+
+updateSearchState(url: string): void {
+
+  if (url.startsWith('/products')) {
+
+    this.currentPage = 'products';
+
+    this.searchService.clearSearch();
+
+    return;
+
+  }
+
+  if (url.startsWith('/orders')) {
+
+    this.currentPage = 'orders';
+
+    this.searchService.clearSearch();
+
+    return;
+
+  }
+
+  this.currentPage = 'disabled';
+
+  this.searchService.clearSearch();
+
+}
+
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    this.searchService.setSearchTerm(input.value);
+  }
+
+  onAuthClick(): void {
     if (this.authService.isLoggedIn()) {
       this.authService.logout();
       this.router.navigate(['/login']);

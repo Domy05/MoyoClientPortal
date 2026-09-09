@@ -6,94 +6,154 @@ using ClientPortal.Api.DTOs;
 
 namespace ClientPortal.Api.Controllers;
 
-public record OrderItemRequest(Guid ProductId, int Quantity);
-public record CreateOrderRequest(List<OrderItemRequest> Items);
+public record OrderItemRequest(
+Guid ProductId,
+int Quantity
+);
+
+public record CreateOrderRequest(
+List<OrderItemRequest> Items
+);
 
 [ApiController]
 [Route("api/[controller]")]
 public class OrdersController : ControllerBase
 {
-    private readonly ClientPortalDbContext _context;
+private readonly ClientPortalDbContext _context;
 
-    public OrdersController(ClientPortalDbContext context)
+
+public OrdersController(ClientPortalDbContext context)
+{
+    _context = context;
+}
+
+private static OrderDto ToDto(Order order) => new()
+{
+    Id = order.Id,
+    Status = order.Status,
+    CreatedAt = order.CreatedAt,
+
+    OrderItems = order.OrderItems.Select(oi => new OrderItemDto
     {
-        _context = context;
+        Id = oi.Id,
+        ProductId = oi.ProductId,
+        ProductName = oi.Product.Name,
+        ProductImage = oi.Product.Image,
+        Quantity = oi.Quantity,
+        UnitPrice = oi.UnitPrice,
+    }).ToList(),
+};
+
+[HttpGet]
+public async Task<IActionResult> GetOrders()
+{
+    var orders = await _context.Orders
+        .Include(o => o.OrderItems)
+        .ThenInclude(oi => oi.Product)
+        .OrderByDescending(o => o.CreatedAt)
+        .ToListAsync();
+
+    return Ok(orders.Select(ToDto));
+}
+
+[HttpGet("{id:guid}")]
+public async Task<IActionResult> GetOrder(Guid id)
+{
+    var order = await _context.Orders
+        .Include(o => o.OrderItems)
+        .ThenInclude(oi => oi.Product)
+        .FirstOrDefaultAsync(o => o.Id == id);
+
+    if (order == null)
+        return NotFound("Order not found.");
+
+    return Ok(ToDto(order));
+}
+
+[HttpPost("{clientId:guid}")]
+public async Task<IActionResult> CreateOrder(
+    Guid clientId,
+    CreateOrderRequest request)
+{
+    if (request.Items == null || request.Items.Count == 0)
+    {
+        return BadRequest("Order must contain at least one item.");
     }
 
-    private static OrderDto ToDto(Order order) => new()
+    // Check that the client exists
+    var clientExists = await _context.Clients
+        .AnyAsync(c => c.Id == clientId);
+
+    if (!clientExists)
     {
-        Id = order.Id,
-        Status = order.Status,
-        CreatedAt = order.CreatedAt,
-        OrderItems = order.OrderItems.Select(oi => new OrderItemDto
-        {
-            Id = oi.Id,
-            ProductId = oi.ProductId,
-            ProductName = oi.Product.Name,
-            ProductImage = oi.Product.Image,
-            Quantity = oi.Quantity,
-            UnitPrice = oi.UnitPrice,
-        }).ToList(),
+        return NotFound("Client not found.");
+    }
+
+    var order = new Order
+    {
+        Id = Guid.NewGuid(),
+        ClientId = clientId,
+        Status = "pending",
     };
 
-    [HttpGet]
-    public async Task<IActionResult> GetOrders()
+    foreach (var item in request.Items)
     {
-        var orders = await _context.Orders
-            .Include(o => o.OrderItems)
-            .ThenInclude(oi => oi.Product)
-            .OrderByDescending(o => o.CreatedAt)
-            .ToListAsync();
-        return Ok(orders.Select(ToDto));
-    }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetOrder(Guid id)
-    {
-        var order = await _context.Orders
-            .Include(o => o.OrderItems)
-            .ThenInclude(oi => oi.Product)
-            .FirstOrDefaultAsync(o => o.Id == id);
-        if (order == null) return NotFound();
-        return Ok(ToDto(order));
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> CreateOrder(CreateOrderRequest request)
-    {
-        if (request.Items == null || request.Items.Count == 0)
-            return BadRequest("Order must contain at least one item.");
-
-        var order = new Order
+        if (item.Quantity <= 0)
         {
-            Status = "pending",
-        };
-
-        foreach (var item in request.Items)
-        {
-            if (item.Quantity <= 0)
-                return BadRequest($"Quantity for product {item.ProductId} must be greater than zero.");
-
-            var product = await _context.Products.FindAsync(item.ProductId);
-            if (product == null)
-                return BadRequest($"Product {item.ProductId} not found.");
-
-            order.OrderItems.Add(new OrderItem
-            {
-                ProductId = item.ProductId,
-                Quantity = item.Quantity,
-                UnitPrice = product.Price,
-            });
+            return BadRequest(
+                $"Quantity for product {item.ProductId} must be greater than zero."
+            );
         }
 
-        _context.Orders.Add(order);
-        await _context.SaveChangesAsync();
+        var product = await _context.Products
+            .FirstOrDefaultAsync(p => p.Id == item.ProductId);
 
-        // reload with products so ToDto has ProductName/ProductImage populated
-        await _context.Entry(order).Collection(o => o.OrderItems).Query()
-            .Include(oi => oi.Product)
-            .LoadAsync();
+        if (product == null)
+        {
+            return BadRequest(
+                $"Product {item.ProductId} not found."
+            );
+        }
 
-        return CreatedAtAction(nameof(GetOrder), new { id = order.Id }, ToDto(order));
+        if (item.Quantity > product.Stock)
+        {
+            return BadRequest(
+                $"Not enough stock for {product.Name}. " +
+                $"Only {product.Stock} available."
+            );
+        }
+
+        order.OrderItems.Add(new OrderItem
+        {
+            Id = Guid.NewGuid(),
+            ProductId = product.Id,
+            Quantity = item.Quantity,
+
+            // Always use the price stored in the database
+            UnitPrice = product.Price,
+        });
+
+        // Reduce stock
+        product.Stock -= item.Quantity;
     }
+
+    _context.Orders.Add(order);
+
+    await _context.SaveChangesAsync();
+
+    // Reload products so ToDto can access ProductName and ProductImage
+    await _context.Entry(order)
+        .Collection(o => o.OrderItems)
+        .Query()
+        .Include(oi => oi.Product)
+        .LoadAsync();
+
+    return CreatedAtAction(
+        nameof(GetOrder),
+        new { id = order.Id },
+        ToDto(order)
+    );
+}
+
+
 }
