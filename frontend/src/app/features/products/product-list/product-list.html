@@ -16,68 +16,132 @@
 </div>
 
 @if (loading()) {
+
   <p class="loading-text">Loading products...</p>
+
 } @else {
-  <div class="product-grid">
-    @for (product of filteredProducts(); track product.id) {
-<div
-  class="product-card"
-  [routerLink]="['/products', product.id]"
->
 
-  <img
-    [src]="product.image"
-    [alt]="product.name"
-    class="product-image"
-  />
+  @if (filteredProducts().length === 0) {
 
-  <div class="product-info">
+    <div class="empty-products">
+      <p>No products found in this category.</p>
+    </div>
 
-    <h3>{{ product.name }}</h3>
+  } @else {
 
-    <p class="price">
-      R {{ product.price.toFixed(2) }}
-    </p>
+    <div class="product-grid">
 
-    <p class="stock">
-      {{ product.stock }} in stock
-    </p>
+      @for (product of paginatedProducts(); track product.id) {
 
-    <div
-      class="quantity-row"
-      (click)="$event.stopPropagation()"
-    >
-
-      <div class="quantity-control">
-        <button
-          (click)="decrementQuantity(product.id)"
+        <div
+          class="product-card"
+          [routerLink]="['/products', product.id]"
         >
-          -
-        </button>
 
-        <span>
-          {{ getQuantity(product.id) }}
-        </span>
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+            class="product-image"
+          />
 
-        <button
-          (click)="incrementQuantity(product.id)"
-        >
-          +
-        </button>
-      </div>
+          <div class="product-info">
 
-      <button
-        class="add-btn"
-        (click)="addToOrder(product.id); $event.stopPropagation()"
-      >
-        {{ addedFeedback()[product.id] ? 'Added ✓' : 'Add to Order' }}
-      </button>
+            <h3>{{ product.name }}</h3>
+
+            <p class="price">
+              R {{ product.price.toFixed(2) }}
+            </p>
+
+            <p class="stock">
+              {{ product.stock }} in stock
+            </p>
+
+            <div
+              class="quantity-row"
+              (click)="$event.stopPropagation()"
+            >
+
+              <div class="quantity-control">
+
+                <button
+                  (click)="decrementQuantity(product.id)"
+                >
+                  −
+                </button>
+
+                <span>
+                  {{ getQuantity(product.id) }}
+                </span>
+
+                <button
+                  (click)="incrementQuantity(product.id)"
+                >
+                  +
+                </button>
+
+              </div>
+
+              <button
+                class="add-btn"
+                (click)="addToOrder(product.id); $event.stopPropagation()"
+              >
+                {{
+                  addedFeedback()[product.id]
+                    ? 'Added ✓'
+                    : 'Add to Order'
+                }}
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
 
     </div>
 
-  </div>
+    @if (totalPages() > 1) {
 
-</div>
+      <div class="pagination">
+
+        <button
+          class="pagination-btn"
+          [disabled]="currentPage() === 1"
+          (click)="previousPage()"
+        >
+          ← Previous
+        </button>
+
+        <div class="page-numbers">
+
+          @for (page of pageNumbers(); track page) {
+
+            <button
+              class="page-number"
+              [class.active]="currentPage() === page"
+              (click)="goToPage(page)"
+            >
+              {{ page }}
+            </button>
+
+          }
+
+        </div>
+
+        <button
+          class="pagination-btn"
+          [disabled]="currentPage() === totalPages()"
+          (click)="nextPage()"
+        >
+          Next →
+        </button>
+
+      </div>
+
     }
-  </div>
+
+  }
+
 }

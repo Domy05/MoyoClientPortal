@@ -167,3 +167,5 @@
 /Users/dominiqunigatu/Documents/MoyoClientPortal/backend/obj/Debug/net10.0/ClientPortal.Api.pdb
 /Users/dominiqunigatu/Documents/MoyoClientPortal/backend/obj/Debug/net10.0/ClientPortal.Api.genruntimeconfig.cache
 /Users/dominiqunigatu/Documents/MoyoClientPortal/backend/obj/Debug/net10.0/ref/ClientPortal.Api.dll
+/Users/dominiqunigatu/Documents/MoyoClientPortal/backend/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/dominiqunigatu/Documents/MoyoClientPortal/backend/bin/Debug/net10.0/Microsoft.Bcl.Cryptography.dll

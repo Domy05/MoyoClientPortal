@@ -16,38 +16,63 @@
   @if (loading()) {
     <p class="loading-text">Loading orders...</p>
   } @else {
-    <div class="orders-card">
+<div class="orders-card">
 
-      <div class="table-row table-header">
-        <div>Order #</div>
-        <div>Date</div>
-        <div>Total</div>
-        <div>Status</div>
-        <div>Actions</div>
-        <div></div>
+  <div class="table-row table-header">
+    <div>Order #</div>
+    <div>Date</div>
+    <div>Total</div>
+    <div>Status</div>
+    <div>Actions</div>
+    <div></div>
+  </div>
+
+  @for (order of paginatedOrders(); track order.id) {
+
+    <div class="table-row order-row">
+
+      <div class="order-number">
+        {{ getOrderNumber(order) }}
       </div>
 
-      @for (order of filteredOrders(); track order.id) {
-        <div class="table-row order-row">
-          <div class="order-number">{{ getOrderNumber(order) }}</div>
-          <div class="order-date">{{ order.createdAt | date: 'yyyy-MM-dd' }}</div>
-          <div class="order-total">R {{ getOrderTotal(order).toFixed(2) }}</div>
-          <div>
-            <span class="status-badge" [class]="order.status">
-              {{ getStatusLabel(order.status) }}
-            </span>
-          </div>
-          <div class="action-cell">
-            <button type="button" class="view-button" (click)="viewOrder(order)">View</button>
-          </div>
-        </div>
-      }
+      <div class="order-date">
+        {{ order.createdAt | date: 'yyyy-MM-dd' }}
+      </div>
 
-      @if (filteredOrders().length === 0) {
-        <div class="empty-state">No orders found.</div>
-      }
+      <div class="order-total">
+        R {{ getOrderTotal(order).toFixed(2) }}
+      </div>
+
+      <div>
+        <span
+          class="status-badge"
+          [class]="order.status"
+        >
+          {{ getStatusLabel(order.status) }}
+        </span>
+      </div>
+
+      <div class="action-cell">
+        <button
+          type="button"
+          class="view-button"
+          (click)="viewOrder(order)"
+        >
+          View
+        </button>
+      </div>
 
     </div>
+
+  }
+
+  @if (filteredOrders().length === 0) {
+    <div class="empty-state">
+      No orders found.
+    </div>
+  }
+
+</div>
 
     <div class="pagination">
       <button type="button" class="pagination-button" [disabled]="currentPage() === 1" (click)="previousPage()" aria-label="Previous page">

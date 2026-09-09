@@ -92,11 +92,10 @@
 
 .orders-card {
   width: 100%;
-
-  overflow: hidden;
-
+  max-height: 520px;
+  overflow-y: auto;
+  overflow-x: auto;
   background: #fffefa;
-
   border: 1px solid #d9d0b8;
   border-radius: 11px;
 }
