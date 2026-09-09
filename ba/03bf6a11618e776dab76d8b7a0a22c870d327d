@@ -1,0 +1,38 @@
+frontend/src/app/features/orders/order-details/order-details.scss
+  h_0aff3b71f739b1 27,33,64,98,121,132,165,190,209,539,554,610
+  h_0aff3b71f739b1 215,263,287,521,620
+backend/Controllers/OrdersController.cs
+  h_0aff3b71f739b1 84,134,138,146
+backend/Program.cs
+  h_0aff3b71f739b1 65,79,83,107
+frontend/src/app/features/orders/order-list/order-list.ts
+  h_0aff3b71f739b1 55,64
+frontend/src/app/features/orders/cart/cart.scss
+  h_0aff3b71f739b1 39,121,324
+  h_0aff3b71f739b1 6,28,59,87,128,170,178,209,223,241,260,270,297,369
+backend/Data/DbSeeder.cs
+  h_0aff3b71f739b1 297,349,352,366
+frontend/src/app/features/products/product-list/product-list.ts
+  h_0aff3b71f739b1 33,61,68,139,152
+frontend/src/app/features/dashboard/dashboard.scss
+  h_0aff3b71f739b1 55
+frontend/src/app/features/products/product-list/product-list.scss
+  h_0aff3b71f739b1 66,74,96,106,132,207,273,286,294,311,353
+backend/Controllers/CartController.cs
+  h_0aff3b71f739b1 28,50,110,143,169
+frontend/src/app/features/orders/order-list/order-list.scss
+  h_0aff3b71f739b1 89,105,116,135,150,168,175,182,189,196,229,243,255,262,359,474
+backend/Data/ClientPortalDbContext.cs
+  h_0aff3b71f739b1 157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ba03bf6a11618e776dab76d8b7a0a22c870d327d",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
