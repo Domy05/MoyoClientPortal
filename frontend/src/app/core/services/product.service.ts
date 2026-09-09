@@ -1,15 +1,18 @@
-import { Injectable } from '@angular/core';
-import { of, delay } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
 
-const MOCK_PRODUCTS: Product[] = [
-  { id: '1', name: 'Widget A', price: 99.99, stock: 42 },
-  { id: '2', name: 'Widget B', price: 149.5, stock: 10 },
-];
+const API_URL = 'http://localhost:5141/api/products';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
+  private http = inject(HttpClient);
+
   getProducts() {
-    return of(MOCK_PRODUCTS).pipe(delay(300));
+    return this.http.get<Product[]>(API_URL);
+  }
+
+  getProduct(id: string) {
+    return this.http.get<Product>(`${API_URL}/${id}`);
   }
 }

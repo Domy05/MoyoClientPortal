@@ -1,23 +1,83 @@
-@if (loading) {
-  <mat-spinner diameter="40"></mat-spinner>
+<div class="page-header">
+  <h1>Products</h1>
+  <p>Browse our wide range of office and business supplies.</p>
+</div>
+
+<div class="filter-pills">
+  @for (filter of filters; track filter) {
+    <button
+      class="pill"
+      [class.active]="selectedFilter() === filter"
+      (click)="selectFilter(filter)"
+    >
+      {{ filter }}
+    </button>
+  }
+</div>
+
+@if (loading()) {
+  <p class="loading-text">Loading products...</p>
 } @else {
-  <table mat-table [dataSource]="products" class="mat-elevation-z2">
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let p">{{ p.name }}</td>
-    </ng-container>
+  <div class="product-grid">
+    @for (product of filteredProducts(); track product.id) {
+<div
+  class="product-card"
+  [routerLink]="['/products', product.id]"
+>
 
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef>Price</th>
-      <td mat-cell *matCellDef="let p">{{ p.price | currency }}</td>
-    </ng-container>
+  <img
+    [src]="product.image"
+    [alt]="product.name"
+    class="product-image"
+  />
 
-    <ng-container matColumnDef="stock">
-      <th mat-header-cell *matHeaderCellDef>Stock</th>
-      <td mat-cell *matCellDef="let p">{{ p.stock }}</td>
-    </ng-container>
+  <div class="product-info">
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+    <h3>{{ product.name }}</h3>
+
+    <p class="price">
+      R {{ product.price.toFixed(2) }}
+    </p>
+
+    <p class="stock">
+      {{ product.stock }} in stock
+    </p>
+
+    <div
+      class="quantity-row"
+      (click)="$event.stopPropagation()"
+    >
+
+      <div class="quantity-control">
+        <button
+          (click)="decrementQuantity(product.id)"
+        >
+          -
+        </button>
+
+        <span>
+          {{ getQuantity(product.id) }}
+        </span>
+
+        <button
+          (click)="incrementQuantity(product.id)"
+        >
+          +
+        </button>
+      </div>
+
+      <button
+        class="add-btn"
+        (click)="addToOrder(product.id); $event.stopPropagation()"
+      >
+        {{ addedFeedback()[product.id] ? 'Added ✓' : 'Add to Order' }}
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+    }
+  </div>
 }

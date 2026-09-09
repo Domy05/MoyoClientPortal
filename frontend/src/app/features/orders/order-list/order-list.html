@@ -1,38 +1,63 @@
-<div class="header">
-  <h2>Orders</h2>
-  <a mat-raised-button color="primary" routerLink="/orders/new">New Order</a>
+<div class="order-page">
+
+  <div class="page-heading">
+    <h1>My Orders</h1>
+    <p>View and track your orders.</p>
+  </div>
+
+  <div class="filters">
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'all'" (click)="selectStatus('all')">All orders</button>
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'pending'" (click)="selectStatus('pending')">Pending</button>
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'confirmed'" (click)="selectStatus('confirmed')">Processing</button>
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'shipped'" (click)="selectStatus('shipped')">Shipped</button>
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'cancelled'" (click)="selectStatus('cancelled')">Cancelled</button>
+  </div>
+
+  @if (loading()) {
+    <p class="loading-text">Loading orders...</p>
+  } @else {
+    <div class="orders-card">
+
+      <div class="table-row table-header">
+        <div>Order #</div>
+        <div>Date</div>
+        <div>Total</div>
+        <div>Status</div>
+        <div>Actions</div>
+        <div></div>
+      </div>
+
+      @for (order of filteredOrders(); track order.id) {
+        <div class="table-row order-row">
+          <div class="order-number">{{ getOrderNumber(order) }}</div>
+          <div class="order-date">{{ order.createdAt | date: 'yyyy-MM-dd' }}</div>
+          <div class="order-total">R {{ getOrderTotal(order).toFixed(2) }}</div>
+          <div>
+            <span class="status-badge" [class]="order.status">
+              {{ getStatusLabel(order.status) }}
+            </span>
+          </div>
+          <div class="action-cell">
+            <button type="button" class="view-button" (click)="viewOrder(order)">View</button>
+          </div>
+        </div>
+      }
+
+      @if (filteredOrders().length === 0) {
+        <div class="empty-state">No orders found.</div>
+      }
+
+    </div>
+
+    <div class="pagination">
+      <button type="button" class="pagination-button" [disabled]="currentPage() === 1" (click)="previousPage()" aria-label="Previous page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"></path></svg>
+      </button>
+      <button type="button" class="pagination-button active">{{ currentPage() }}</button>
+      <button type="button" class="pagination-button" (click)="nextPage()" aria-label="Next page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"></path></svg>
+      </button>
+    </div>
+  }
+
 </div>
-
-@if (loading) {
-  <mat-spinner diameter="40"></mat-spinner>
-} @else {
-  <table mat-table [dataSource]="orders" class="mat-elevation-z2">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Order ID</th>
-      <td mat-cell *matCellDef="let o">{{ o.id }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="productId">
-      <th mat-header-cell *matHeaderCellDef>Product</th>
-      <td mat-cell *matCellDef="let o">{{ o.productId }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef>Qty</th>
-      <td mat-cell *matCellDef="let o">{{ o.quantity }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let o">{{ o.status }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef>Created</th>
-      <td mat-cell *matCellDef="let o">{{ o.createdAt | date: 'short' }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-}

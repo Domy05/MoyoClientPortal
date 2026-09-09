@@ -1,0 +1,105 @@
+@if (loading()) {
+  <p class="loading-text">Loading order...</p>
+} @else if (order(); as o) {
+
+  <div class="order-details-page">
+
+    <button type="button" class="back-link" (click)="goBack()">
+      <span>←</span>
+      Back to My Orders
+    </button>
+
+    <div class="page-heading">
+      <h1>Order {{ getOrderNumber() }}</h1>
+      <p>Placed on {{ o.createdAt | date:'yyyy-MM-dd' }} · R {{ getTotal().toFixed(2) }}</p>
+    </div>
+
+    <div class="status-card">
+      <div class="status-step" [class.completed]="getStatusIndex() >= 0" [class.current]="getStatusIndex() === 0">
+        <div class="status-circle">{{ getStatusIndex() > 0 ? '✓' : '1' }}</div>
+        <div class="status-info"><strong>Pending</strong><span>Order received</span></div>
+      </div>
+
+      <div class="status-line" [class.completed]="getStatusIndex() >= 1"></div>
+
+      <div class="status-step" [class.completed]="getStatusIndex() >= 1" [class.current]="getStatusIndex() === 1">
+        <div class="status-circle">
+          @if (getStatusIndex() > 1) { ✓ } @else { 2 }
+        </div>
+        <div class="status-info"><strong>Processing</strong><span>Being prepared</span></div>
+      </div>
+
+      <div class="status-line" [class.completed]="getStatusIndex() >= 2"></div>
+
+      <div class="status-step" [class.completed]="getStatusIndex() >= 2" [class.current]="getStatusIndex() === 2">
+        <div class="status-circle">
+          @if (getStatusIndex() > 2) { ✓ } @else { 3 }
+        </div>
+        <div class="status-info"><strong>Shipped</strong><span>On its way</span></div>
+      </div>
+
+      <div class="status-line" [class.completed]="getStatusIndex() >= 3"></div>
+
+      <div class="status-step" [class.completed]="false">
+        <div class="status-circle">4</div>
+        <div class="status-info"><strong>Delivered</strong><span>Order received</span></div>
+      </div>
+    </div>
+
+    <div class="order-content">
+
+      <section class="items-section">
+        <h2>Order Items</h2>
+
+        <div class="items-card">
+          <div class="items-header">
+            <div>Product</div>
+            <div>Price</div>
+            <div>Quantity</div>
+            <div>Total</div>
+          </div>
+
+          @for (item of displayItems(); track item.productId) {
+            <div class="item-row">
+              <div class="product-info">
+                <div class="product-image">
+                  <img [src]="item.image" [alt]="item.name" />
+                </div>
+                <span>{{ item.name }}</span>
+              </div>
+              <div class="item-price">R {{ item.unitPrice.toFixed(2) }}</div>
+              <div class="item-quantity">{{ item.quantity }}</div>
+              <div class="item-total">R {{ item.total.toFixed(2) }}</div>
+            </div>
+          }
+        </div>
+      </section>
+
+      <aside class="summary-card">
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <strong>R {{ getSubtotal().toFixed(2) }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>VAT (15%)</span>
+          <strong>R {{ getVat().toFixed(2) }}</strong>
+        </div>
+
+        <div class="summary-row total-row">
+          <span>Total</span>
+          <strong>R {{ getTotal().toFixed(2) }}</strong>
+        </div>
+
+        @if (o.status !== 'cancelled') {
+          <button type="button" class="reorder-button" (click)="reorder()">Reorder</button>
+        }
+      </aside>
+
+    </div>
+
+  </div>
+
+}

@@ -1,0 +1,151 @@
+.page-header {
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+
+.page-header p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.pill {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid #d9d0b8;
+  background: var(--bone);
+  color: #374151;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.pill.active {
+  background: #16281f;
+  color: white;
+  border-color: #16281f;
+}
+
+.pill:hover:not(.active) {
+  background: #ece4cf;
+}
+
+.loading-text {
+  color: #6b7280;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: var(--bone);
+  border: 1px solid #d9d0b8;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  border-color: #b9ae91;
+  box-shadow: 0 6px 18px rgba(22, 40, 31, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.product-info h3 {
+  font-size: 1.05rem;
+}
+
+.price {
+  color: #2f4f3f;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.stock {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.quantity-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  cursor: default;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d9d0b8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.quantity-control button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: var(--bone);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.quantity-control button:hover {
+  background: #ece4cf;
+}
+
+.quantity-control span {
+  width: 28px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.add-btn {
+  flex: 1;
+  background: #16281f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #0f1f18;
+}

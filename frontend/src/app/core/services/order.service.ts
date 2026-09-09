@@ -1,33 +1,22 @@
-import { Injectable } from '@angular/core';
-import { of, delay } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Order } from '../models/order.model';
 
-const MOCK_ORDERS: Order[] = [
-  { id: '1', productId: '1', quantity: 2, status: 'pending', createdAt: new Date().toISOString() },
-  { id: '2', productId: '2', quantity: 1, status: 'confirmed', createdAt: new Date().toISOString() },
-];
+const API_URL = 'http://localhost:5141/api/orders';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
-  private orders: Order[] = [...MOCK_ORDERS];
+  private http = inject(HttpClient);
 
   getOrders() {
-    return of(this.orders).pipe(delay(300));
+    return this.http.get<Order[]>(API_URL);
   }
 
   getOrder(id: string) {
-    return of(this.orders.find((o) => o.id === id)).pipe(delay(200));
+    return this.http.get<Order>(`${API_URL}/${id}`);
   }
 
-  addOrder(productId: string, quantity: number) {
-    const newOrder: Order = {
-      id: crypto.randomUUID(),
-      productId,
-      quantity,
-      status: 'pending',
-      createdAt: new Date().toISOString(),
-    };
-    this.orders = [...this.orders, newOrder];
-    return of(newOrder).pipe(delay(300));
+  addOrder(items: { productId: string; quantity: number; unitPrice: number }[]) {
+    return this.http.post<Order>(API_URL, { items });
   }
 }
