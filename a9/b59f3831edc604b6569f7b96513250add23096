@@ -1,0 +1,126 @@
+frontend/src/app/features/products/product-detail/product-detail.ts
+  h_0aff3b71f739b1 6,19,60-65
+  h_0aff3b71f739b1 66-67,71-72
+backend/Program.cs
+  h_0aff3b71f739b1 1-4,7-8,10-34,38-39,43-45
+  h_0aff3b71f739b1 47
+frontend/src/app/features/orders/cart/cart.ts
+  h_0aff3b71f739b1 1,4-5,15-17,19-20,23-24,27-28,31,36,52-64
+frontend/src/app/features/orders/cart/cart.html
+  h_0aff3b71f739b1 18,25,28,31,33,36,39,45,53
+  h_0aff3b71f739b1 5,23,32,48-49,57-58,61-62,65-66,72-73
+frontend/src/app/core/services/product.service.ts
+  h_0aff3b71f739b1 1-2,5,9-10,12,16
+  h_0aff3b71f739b1 18
+backend/Controllers/OrdersController.cs
+  h_0aff3b71f739b1 1-76
+frontend/src/app/features/orders/order-list/order-list.ts
+  h_0aff3b71f739b1 1,4-7,9,18,20-21,23-43,45-46,49-50,53,55-57,62-66,71,75
+  h_0aff3b71f739b1 22,47,58
+backend/Models/Order.cs
+  h_0aff3b71f739b1 1-9
+  h_0aff3b71f739b1 10-15
+backend/Controllers/ProductsController.cs
+  h_0aff3b71f739b1 1-32
+backend/Models/Product.cs
+  h_0aff3b71f739b1 1-16
+  h_0aff3b71f739b1 17-31
+backend/appsettings.json
+  h_0aff3b71f739b1 2-4
+  h_0aff3b71f739b1 12
+backend/Data/DbSeeder.cs
+  h_0aff3b71f739b1 1-64
+frontend/src/app/core/services/order.service.ts
+  h_0aff3b71f739b1 1-3,5,9,11-12,15-16,19-20
+  h_0aff3b71f739b1 7
+frontend/src/app/core/models/order.model.ts
+  h_0aff3b71f739b1 1,5-6,8-10,12
+frontend/src/app/features/dashboard/dashboard.html
+  h_0aff3b71f739b1 20,34,70,75
+frontend/src/app/features/orders/order-details/order-details.ts
+  h_0aff3b71f739b1 1,8,11-19,32,35,54-66,72,74,77-79,90,100,113-120
+  h_0aff3b71f739b1 91-95,101-104
+frontend/src/app/features/orders/order-details/order-details.html
+  h_0aff3b71f739b1 7,13,18,25,32,34,36,38,41,43-45,62,66,68,70-72,79
+  h_0aff3b71f739b1 2,14,19-20,23,27,29,52,82-83,87-88,92-93,97
+frontend/src/app/app.config.ts
+  h_0aff3b71f739b1 1,3-4,8
+  h_0aff3b71f739b1 9
+frontend/src/app/features/products/product-list/product-list.ts
+  h_0aff3b71f739b1 6,17,61-68
+  h_0aff3b71f739b1 69-72
+backend/Data/ClientPortalDbContext.cs
+  h_0aff3b71f739b1 1-76
+frontend/src/app/features/dashboard/dashboard.ts
+  h_0aff3b71f739b1 1,17-19,23-25,28-31
+frontend/src/app/core/services/cart.service.ts
+  h_0aff3b71f739b1 1-50
+frontend/src/app/features/orders/order-list/order-list.html
+  h_0aff3b71f739b1 9-13,16-27,30-44,46-48,50,52-61
+  h_0aff3b71f739b1 5
+backend/ClientPortal.Api.csproj
+  h_0aff3b71f739b1 11-20
+backend/Models/OrderItem.cs
+  h_0aff3b71f739b1 1-21
+backend/bin/Debug/net10.0/BuildHost-net472/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config
+  h_0aff3b71f739b1 1-68
+backend/bin/Debug/net10.0/BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.deps.json
+  h_0aff3b71f739b1 1-171
+backend/bin/Debug/net10.0/BuildHost-netcore/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.runtimeconfig.json
+  h_0aff3b71f739b1 1-14
+backend/bin/Debug/net10.0/ClientPortal.Api.deps.json
+  h_0aff3b71f739b1 11-14,20-53,56,65-655,658-849,861-881,889-1204,1207-1209
+backend/bin/Debug/net10.0/ClientPortal.Api.runtimeconfig.json
+  h_0aff3b71f739b1 16
+backend/bin/Debug/net10.0/appsettings.json
+  h_0aff3b71f739b1 2-4,12
+backend/obj/ClientPortal.Api.csproj.EntityFrameworkCore.targets
+  h_0aff3b71f739b1 1-28
+backend/obj/ClientPortal.Api.csproj.nuget.dgspec.json
+  h_0aff3b71f739b1 50-69
+backend/obj/ClientPortal.Api.csproj.nuget.g.props
+  h_0aff3b71f739b1 15-26
+backend/obj/ClientPortal.Api.csproj.nuget.g.targets
+  h_0aff3b71f739b1 4-7
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfo.cs
+  h_0aff3b71f739b1 16
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfoInputs.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.GeneratedMSBuildEditorConfig.editorconfig
+  h_0aff3b71f739b1 3,5-6,9,11-12,15,17-19
+backend/obj/Debug/net10.0/ClientPortal.Api.MvcApplicationPartsAssemblyInfo.cs
+  h_0aff3b71f739b1 14
+backend/obj/Debug/net10.0/ClientPortal.Api.csproj.CoreCompileInputs.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.csproj.FileListAbsolute.txt
+  h_0aff3b71f739b1 35-169
+backend/obj/Debug/net10.0/ClientPortal.Api.genruntimeconfig.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.sourcelink.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rpswa.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/project.assets.json
+  h_0aff3b71f739b1 5-53,76,79-115,120-178,181-221,223-2556,2558-2846,2853-3088,3091-3092,3094,3105,3108-3622,3627-3631,3680-3699,4138
+backend/obj/project.nuget.cache
+  h_0aff3b71f739b1 3,7-9,11-61,63
+frontend/package-lock.json
+  h_0aff3b71f739b1 11,329-344
+frontend/package.json
+  h_0aff3b71f739b1 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "a9b59f3831edc604b6569f7b96513250add23096",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
