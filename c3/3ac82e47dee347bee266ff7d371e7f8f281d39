@@ -1,0 +1,39 @@
+backend/DTOs/ProductDto.cs
+  h_0aff3b71f739b1 1-16
+backend/Controllers/ProductsController.cs
+  h_0aff3b71f739b1 4,23-37,45-60
+  h_0aff3b71f739b1 22,44
+backend/Program.cs
+  h_0aff3b71f739b1 30-34
+backend/Controllers/OrdersController.cs
+  h_0aff3b71f739b1 5,23-38,47,58,69,74-76,92-95,97
+backend/DTOs/OrderDto.cs
+  h_0aff3b71f739b1 1-19
+backend/Data/DbSeeder.cs
+  h_0aff3b71f739b1 39
+backend/Data/ClientPortalDbContext.cs
+  h_0aff3b71f739b1 36,76
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfo.cs
+  h_0aff3b71f739b1 16
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfoInputs.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.csproj.FileListAbsolute.txt
+  h_0aff3b71f739b1 12,38,146-169
+backend/obj/Debug/net10.0/ClientPortal.Api.sourcelink.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
+  h_0aff3b71f739b1 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "c33ac82e47dee347bee266ff7d371e7f8f281d39",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
