@@ -14,10 +14,6 @@
   box-sizing: border-box;
 }
 
-/* =========================================
-   ORDER DETAILS PAGE
-   ========================================= */
-
 .order-details-page {
   width: 100%;
   max-width: 100%;
@@ -28,17 +24,13 @@
   color: #16281f;
 }
 
-/* =========================================
-   LOADING
-   ========================================= */
+
 
 .loading-text {
   color: #6b7280;
 }
 
-/* =========================================
-   BACK LINK
-   ========================================= */
+
 
 .back-link {
   display: inline-flex;
@@ -69,9 +61,7 @@
   color: #123f3a;
 }
 
-/* =========================================
-   PAGE HEADING
-   ========================================= */
+
 
 .page-heading {
   width: 100%;
@@ -105,9 +95,7 @@
   overflow-wrap: anywhere;
 }
 
-/* =========================================
-   STATUS CARD
-   ========================================= */
+
 
 .status-card {
   display: flex;
@@ -130,9 +118,7 @@
   background: #fffefa;
 }
 
-/* =========================================
-   STATUS STEP
-   ========================================= */
+
 
 .status-step {
   display: flex;
@@ -143,9 +129,7 @@
   min-width: 0;
 }
 
-/* =========================================
-   STATUS CIRCLE
-   ========================================= */
+
 
 .status-circle {
   width: 38px;
@@ -178,9 +162,7 @@
   color: #00665d;
 }
 
-/* =========================================
-   STATUS INFO
-   ========================================= */
+
 
 .status-info {
   display: flex;
@@ -205,9 +187,7 @@
   overflow-wrap: anywhere;
 }
 
-/* =========================================
-   STATUS LINE
-   ========================================= */
+
 
 .status-line {
   flex: 1 1 0;
@@ -226,16 +206,13 @@
   background: #00665d;
 }
 
-/* =========================================
-   MAIN CONTENT
-   ========================================= */
+
 
 .order-content {
   display: grid;
 
   grid-template-columns:
-    minmax(0, 2fr)
-    minmax(0, 0.9fr);
+    minmax(0, 2fr) minmax(0, 0.9fr);
 
   gap: 28px;
 
@@ -248,9 +225,6 @@
   align-items: start;
 }
 
-/* =========================================
-   ORDER ITEMS
-   ========================================= */
 
 .items-section {
   width: 100%;
@@ -281,18 +255,12 @@
   background: #fffefa;
 }
 
-/* =========================================
-   ITEMS HEADER
-   ========================================= */
 
 .items-header {
   display: grid;
 
   grid-template-columns:
-    minmax(0, 2.2fr)
-    minmax(0, 1fr)
-    minmax(0, 1fr)
-    minmax(0, 1fr);
+    minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 
   align-items: center;
 
@@ -311,18 +279,12 @@
   font-weight: 700;
 }
 
-/* =========================================
-   ITEM ROW
-   ========================================= */
 
 .item-row {
   display: grid;
 
   grid-template-columns:
-    minmax(0, 2.2fr)
-    minmax(0, 1fr)
-    minmax(0, 1fr)
-    minmax(0, 1fr);
+    minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 
   align-items: center;
 
@@ -344,9 +306,6 @@
   border-bottom: none;
 }
 
-/* =========================================
-   PRODUCT
-   ========================================= */
 
 .product-info {
   display: flex;
@@ -395,9 +354,6 @@
   object-fit: contain;
 }
 
-/* =========================================
-   ITEM VALUES
-   ========================================= */
 
 .item-price,
 .item-quantity,
@@ -416,9 +372,6 @@
   font-weight: 600;
 }
 
-/* =========================================
-   SUMMARY CARD
-   ========================================= */
 
 .summary-card {
   width: 100%;
@@ -443,9 +396,6 @@
   font-weight: 700;
 }
 
-/* =========================================
-   SUMMARY ROW
-   ========================================= */
 
 .summary-row {
   display: flex;
@@ -477,9 +427,6 @@
   font-weight: 600;
 }
 
-/* =========================================
-   TOTAL
-   ========================================= */
 
 .summary-row.total-row {
   padding-top: 18px;
@@ -499,9 +446,6 @@
   font-weight: 700;
 }
 
-/* =========================================
-   REORDER BUTTON
-   ========================================= */
 
 .reorder-button {
   display: block;
@@ -531,9 +475,6 @@
   background: #00534d;
 }
 
-/* =========================================
-   TABLET
-   ========================================= */
 
 @media (max-width: 1000px) {
   .order-content {
@@ -545,9 +486,6 @@
   }
 }
 
-/* =========================================
-   SMALL TABLET
-   ========================================= */
 
 @media (max-width: 800px) {
   .status-card {
@@ -580,10 +518,7 @@
   .items-header,
   .item-row {
     grid-template-columns:
-      minmax(0, 2fr)
-      minmax(0, 0.9fr)
-      minmax(0, 0.9fr)
-      minmax(0, 0.9fr);
+      minmax(0, 2fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 0.9fr);
 
     padding-left: 16px;
     padding-right: 16px;
@@ -601,9 +536,7 @@
   }
 }
 
-/* =========================================
-   MOBILE
-   ========================================= */
+
 
 @media (max-width: 600px) {
   .back-link {
@@ -618,9 +551,7 @@
     font-size: 1.7rem;
   }
 
-  /* -----------------------------------------
-     Status timeline
-     ----------------------------------------- */
+
 
   .status-card {
     display: flex;
@@ -676,9 +607,7 @@
     margin: 0 0 0 17px;
   }
 
-  /* -----------------------------------------
-     Order items
-     ----------------------------------------- */
+
 
   .items-header {
     display: none;
@@ -688,8 +617,7 @@
     display: grid;
 
     grid-template-columns:
-      minmax(0, 1fr)
-      auto;
+      minmax(0, 1fr) auto;
 
     gap: 10px 12px;
 
@@ -736,9 +664,6 @@
     padding-top: 4px;
   }
 
-  /* -----------------------------------------
-     Summary
-     ----------------------------------------- */
 
   .summary-card {
     padding: 20px;
@@ -749,9 +674,6 @@
   }
 }
 
-/* =========================================
-   VERY SMALL PHONES
-   ========================================= */
 
 @media (max-width: 400px) {
   .status-card {

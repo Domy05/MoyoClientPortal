@@ -29,9 +29,6 @@ public partial class ClientPortalDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // =========================
-        // Client
-        // =========================
 
         modelBuilder.Entity<Client>(entity =>
         {
@@ -74,9 +71,6 @@ public partial class ClientPortalDbContext : DbContext
                 .HasDefaultValueSql("(sysutcdatetime())");
         });
 
-        // =========================
-        // Order
-        // =========================
 
         modelBuilder.Entity<Order>(entity =>
         {
@@ -100,9 +94,6 @@ public partial class ClientPortalDbContext : DbContext
                 .HasConstraintName("FK_Orders_Clients");
         });
 
-        // =========================
-        // OrderItem
-        // =========================
 
         modelBuilder.Entity<OrderItem>(entity =>
         {
@@ -126,10 +117,6 @@ public partial class ClientPortalDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_OrderItems_Products");
         });
-
-        // =========================
-        // Product
-        // =========================
 
         modelBuilder.Entity<Product>(entity =>
         {
@@ -167,9 +154,7 @@ public partial class ClientPortalDbContext : DbContext
                 .HasMaxLength(50);
         });
 
-        // =========================
-        // CartItem
-        // =========================
+
 
         modelBuilder.Entity<CartItem>(entity =>
         {

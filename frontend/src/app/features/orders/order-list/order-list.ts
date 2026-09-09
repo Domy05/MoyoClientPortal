@@ -52,7 +52,7 @@ export class OrderList implements OnInit {
 
     let filtered = orders;
 
-    // Status filter
+
     if (status !== 'all') {
 
       filtered = filtered.filter(
@@ -61,7 +61,7 @@ export class OrderList implements OnInit {
 
     }
 
-    // Search filter
+
     if (search) {
 
       filtered = filtered.filter((order) => {

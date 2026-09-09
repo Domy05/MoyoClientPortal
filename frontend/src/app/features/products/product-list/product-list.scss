@@ -4,9 +4,6 @@ text-align: center;
 padding: 40px 20px;
 }
 
-/* =========================================
-PAGE HEADER
-========================================= */
 
 .page-header {
 margin-bottom: 24px;
@@ -24,9 +21,6 @@ color: #6b7280;
 line-height: 1.5;
 }
 
-/* =========================================
-FILTERS
-========================================= */
 
 .filter-pills {
 display: flex;
@@ -61,9 +55,6 @@ color: white;
 border-color: #16281f;
 }
 
-/* =========================================
-PRODUCT GRID
-========================================= */
 
 .product-grid {
 display: grid;
@@ -72,9 +63,7 @@ gap: 24px;
 width: 100%;
 }
 
-/* =========================================
-PRODUCT CARD
-========================================= */
+
 
 .product-card {
 min-width: 0;
@@ -82,7 +71,7 @@ overflow: hidden;
 
 background: var(--bone, #f8f5ed);
 
-/* Moyo green border */
+
 border: 2px solid #000000;
 
 border-radius: 12px;
@@ -104,9 +93,7 @@ box-shadow:
 0 0 0 2px rgba(31, 107, 69, 0.08);
 }
 
-/* =========================================
-PRODUCT IMAGE
-========================================= */
+
 
 .product-image {
 display: block;
@@ -116,9 +103,7 @@ object-fit: cover;
 background: #f1eee6;
 }
 
-/* =========================================
-PRODUCT INFO
-========================================= */
+
 
 .product-info {
 padding: 18px;
@@ -144,9 +129,7 @@ color: #6b7280;
 font-size: 0.85rem;
 }
 
-/* =========================================
-QUANTITY + ADD BUTTON
-========================================= */
+
 
 .quantity-row {
 display: flex;
@@ -221,9 +204,7 @@ background: #0f1f18;
 transform: translateY(-1px);
 }
 
-/* =========================================
-PAGINATION
-========================================= */
+
 
 .pagination {
 display: flex;
@@ -289,9 +270,7 @@ opacity: 0.45;
 cursor: not-allowed;
 }
 
-/* =========================================
-EMPTY PRODUCTS
-========================================= */
+
 
 .empty-products {
 display: flex;
@@ -304,9 +283,7 @@ color: #66756d;
 text-align: center;
 }
 
-/* =========================================
-TABLET
-========================================= */
+
 
 @media (max-width: 1100px) {
 .product-grid {
@@ -314,9 +291,7 @@ grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 }
 
-/* =========================================
-SMALL TABLET
-========================================= */
+
 
 @media (max-width: 800px) {
 .product-grid {
@@ -333,9 +308,7 @@ gap: 12px;
 }
 }
 
-/* =========================================
-MOBILE
-========================================= */
+
 
 @media (max-width: 550px) {
 .product-grid {
@@ -377,9 +350,7 @@ height: 36px;
 }
 }
 
-/* =========================================
-VERY SMALL MOBILE
-========================================= */
+
 
 @media (max-width: 380px) {
 .quantity-row {

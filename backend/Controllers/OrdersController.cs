@@ -81,7 +81,7 @@ public async Task<IActionResult> CreateOrder(
         return BadRequest("Order must contain at least one item.");
     }
 
-    // Check that the client exists
+
     var clientExists = await _context.Clients
         .AnyAsync(c => c.Id == clientId);
 
@@ -131,11 +131,11 @@ var order = new Order
             ProductId = product.Id,
             Quantity = item.Quantity,
 
-            // Always use the price stored in the database
+
             UnitPrice = product.Price,
         });
 
-        // Reduce stock
+
         product.Stock -= item.Quantity;
     }
 
@@ -143,7 +143,7 @@ var order = new Order
 
     await _context.SaveChangesAsync();
 
-    // Reload products so ToDto can access ProductName and ProductImage
+
     await _context.Entry(order)
         .Collection(o => o.OrderItems)
         .Query()

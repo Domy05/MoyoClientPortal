@@ -74,9 +74,6 @@
   color: white;
 }
 
-/* =========================================
-   ORDERS CARD
-   ========================================= */
 
 .orders-card {
   width: 100%;
@@ -89,9 +86,7 @@
   box-shadow: 0 4px 14px rgba(22, 40, 31, 0.05);
 }
 
-/* =========================================
-   TABLE ROW
-   ========================================= */
+
 
 .table-row {
   display: grid;
@@ -107,9 +102,7 @@
   padding: 0 20px;
 }
 
-/* =========================================
-   TABLE HEADER
-   ========================================= */
+
 
 .table-header {
   min-height: 57px;
@@ -120,9 +113,7 @@
   border-bottom: 1px solid #e5ddc8;
 }
 
-/* =========================================
-   ORDER ROW
-   ========================================= */
+
 
 .order-row {
   min-height: 76px;
@@ -141,9 +132,7 @@
   border-bottom: none;
 }
 
-/* =========================================
-   TABLE VALUES
-   ========================================= */
+
 
 .order-number {
   color: #356a65;
@@ -158,9 +147,7 @@
   color: #527d78;
 }
 
-/* =========================================
-   STATUS BADGES
-   ========================================= */
+
 
 .status-badge {
   display: inline-flex;
@@ -172,44 +159,41 @@
   font-weight: 600;
 }
 
-/* Pending */
 
 .status-badge.pending {
   background: #fff0d1;
   color: #d49324;
 }
 
-/* Processing */
+
 
 .status-badge.processing {
   background: #fff0d1;
   color: #d49324;
 }
 
-/* Shipped */
+
 
 .status-badge.shipped {
   background: #dceaff;
   color: #3975cf;
 }
 
-/* Delivered */
+
 
 .status-badge.delivered {
   background: #def4e1;
   color: #3d9a5d;
 }
 
-/* Cancelled */
+
 
 .status-badge.cancelled {
   background: #ffe2df;
   color: #df5d59;
 }
 
-/* =========================================
-   ACTION / VIEW BUTTON
-   ========================================= */
+
 
 .action-cell {
   display: flex;
@@ -242,9 +226,7 @@
   transform: scale(0.98);
 }
 
-/* =========================================
-   ROW ARROW
-   ========================================= */
+
 
 .row-arrow {
   display: flex;
@@ -258,9 +240,7 @@
   color: #74a09b;
 }
 
-/* =========================================
-   EMPTY STATE
-   ========================================= */
+
 
 .empty-state {
   min-height: 160px;
@@ -272,18 +252,14 @@
   font-size: 0.9rem;
 }
 
-/* =========================================
-   LOADING
-   ========================================= */
+
 
 .loading-text {
   color: #527d78;
   font-size: 0.9rem;
 }
 
-/* =========================================
-   ORDER SUMMARY
-   ========================================= */
+
 
 .order-summary {
   display: flex;
@@ -323,9 +299,6 @@
   font-weight: 700;
 }
 
-/* =========================================
-   PAGINATION
-   ========================================= */
 
 .pagination {
   display: flex;
@@ -383,9 +356,7 @@
   cursor: default;
 }
 
-/* =========================================
-   ORDER DETAILS MODAL
-   ========================================= */
+
 
 .modal-backdrop {
   position: fixed;
@@ -413,9 +384,6 @@
     0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* =========================================
-   MODAL HEADER
-   ========================================= */
 
 .modal-header {
   display: flex;
@@ -465,17 +433,11 @@
   color: #16281f;
 }
 
-/* =========================================
-   MODAL STATUS
-   ========================================= */
 
 .modal-status {
   padding: 20px 0;
 }
 
-/* =========================================
-   ORDER INFORMATION
-   ========================================= */
 
 .order-information {
   border-top: 1px solid #e5ddc8;
@@ -509,9 +471,7 @@
   font-size: 1.15rem;
 }
 
-/* =========================================
-   ORDER SUMMARY IN MODAL
-   ========================================= */
+
 
 .modal-section {
   margin-top: 25px;
@@ -547,9 +507,6 @@
   font-size: 0.78rem;
 }
 
-/* =========================================
-   CLOSE MODAL BUTTON
-   ========================================= */
 
 .close-modal-button {
   width: 100%;
@@ -578,9 +535,6 @@
   transform: scale(0.99);
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
 
 @media (max-width: 900px) {
   .filters {

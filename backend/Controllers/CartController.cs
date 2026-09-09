@@ -25,7 +25,7 @@ public class CartController : ControllerBase
         _context = context;
     }
 
-    // GET: api/cart/{clientId}
+
     [HttpGet("{clientId}")]
     public async Task<IActionResult> GetCart(Guid clientId)
     {
@@ -47,7 +47,7 @@ public class CartController : ControllerBase
         return Ok(result);
     }
 
-    // POST: api/cart/{clientId}
+
     [HttpPost("{clientId}")]
     public async Task<IActionResult> AddToCart(
         Guid clientId,
@@ -107,7 +107,7 @@ public class CartController : ControllerBase
         });
     }
 
-    // PUT: api/cart/{clientId}/{productId}
+
     [HttpPut("{clientId}/{productId}")]
     public async Task<IActionResult> UpdateCartItem(
         Guid clientId,
@@ -140,7 +140,7 @@ public class CartController : ControllerBase
         });
     }
 
-    // DELETE: api/cart/{clientId}/{productId}
+
     [HttpDelete("{clientId}/{productId}")]
     public async Task<IActionResult> RemoveFromCart(
         Guid clientId,
@@ -166,7 +166,7 @@ public class CartController : ControllerBase
         });
     }
 
-    // DELETE: api/cart/{clientId}
+
     [HttpDelete("{clientId}")]
     public async Task<IActionResult> ClearCart(Guid clientId)
     {

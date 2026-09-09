@@ -30,7 +30,7 @@ export class ProductList implements OnInit {
 
   addedFeedback = signal<Record<string, boolean>>({});
 
-  // Pagination
+
 
   currentPage = signal(1);
 
@@ -58,14 +58,14 @@ export class ProductList implements OnInit {
 
     let filtered = products;
 
-    // Category filter
+
     if (filter !== 'All') {
       filtered = filtered.filter(
         (product) => product.category === filter
       );
     }
 
-    // Search filter
+
     if (search) {
       filtered = filtered.filter((product) =>
         product.name.toLowerCase().includes(search)
@@ -136,7 +136,7 @@ export class ProductList implements OnInit {
 
     this.selectedFilter.set(filter);
 
-    // Go back to page 1 whenever the category changes
+
     this.currentPage.set(1);
 
   }
@@ -149,7 +149,7 @@ export class ProductList implements OnInit {
 
     this.currentPage.set(page);
 
-    // Scroll back to the products when changing page
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

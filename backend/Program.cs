@@ -8,9 +8,6 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ========================================
-// Database
-// ========================================
 
 builder.Services.AddDbContext<ClientPortalDbContext>(options =>
     options.UseSqlServer(
@@ -18,15 +15,9 @@ builder.Services.AddDbContext<ClientPortalDbContext>(options =>
     )
 );
 
-// ========================================
-// Password hashing
-// ========================================
 
 builder.Services.AddScoped<IPasswordHasher<Client>, PasswordHasher<Client>>();
 
-// ========================================
-// JWT Authentication
-// ========================================
 
 var jwtKey = builder.Configuration["Jwt:Key"];
 
@@ -59,9 +50,6 @@ builder.Services
         };
     });
 
-// ========================================
-// CORS
-// ========================================
 
 builder.Services.AddCors(options =>
 {
@@ -74,9 +62,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-// ========================================
-// Controllers
-// ========================================
+
 
 builder.Services
     .AddControllers()
@@ -86,22 +72,15 @@ builder.Services
             System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
 
-// ========================================
-// Swagger
-// ========================================
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// ========================================
-// Build application
-// ========================================
+
 
 var app = builder.Build();
 
-// ========================================
-// Development tools
-// ========================================
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -111,9 +90,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// ========================================
-// Database seeding
-// ========================================
 
 using (var scope = app.Services.CreateScope())
 {
@@ -123,15 +99,12 @@ using (var scope = app.Services.CreateScope())
     DbSeeder.Seed(db);
 }
 
-// ========================================
-// HTTP pipeline
-// ========================================
 
 app.UseHttpsRedirection();
 
 app.UseCors("AllowFrontend");
 
-// Authentication MUST come before Authorization
+
 app.UseAuthentication();
 
 app.UseAuthorization();

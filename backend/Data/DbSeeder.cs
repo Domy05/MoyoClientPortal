@@ -10,9 +10,6 @@ public static class DbSeeder
         var random = new Random(42);
         var passwordHasher = new PasswordHasher<Client>();
 
-        // =========================================================
-        // CLIENTS
-        // =========================================================
 
         var clients = new List<Client>
         {
@@ -227,9 +224,6 @@ public static class DbSeeder
             }
         };
 
-        // =========================================================
-        // ADD CLIENTS THAT DON'T ALREADY EXIST
-        // =========================================================
 
         foreach (var client in clients)
         {
@@ -259,16 +253,10 @@ public static class DbSeeder
 
         context.SaveChanges();
 
-        // =========================================================
-        // GET JOHN DOE
-        // =========================================================
 
         var john = context.Clients
             .First(c => c.Email == "john.doe@moyo.co.za");
 
-        // =========================================================
-        // PRODUCTS
-        // =========================================================
 
         var catalog = new (string Key, string DisplayName, string Category)[]
         {
@@ -294,9 +282,6 @@ public static class DbSeeder
             ("printer-ink", "Printer Ink", "Printing")
         };
 
-        // =========================================================
-        // INSERT ALL PRODUCT VARIANTS
-        // =========================================================
 
         foreach (var entry in catalog)
         {
@@ -309,7 +294,7 @@ public static class DbSeeder
             {
                 var productName = $"{variant.Brand} {entry.DisplayName}";
 
-                // Look for this exact brand/product combination.
+
                 var existingProduct = context.Products
                     .FirstOrDefault(p => p.Name == productName);
 
@@ -348,8 +333,6 @@ public static class DbSeeder
                 }
                 else
                 {
-                    // Update the existing product with the current
-                    // variant information without creating duplicates.
 
                     existingProduct.Name = productName;
                     existingProduct.Category = entry.Category;
@@ -363,12 +346,10 @@ public static class DbSeeder
 
         context.SaveChanges();
 
-        // Reload all products after inserting the variants.
+
         var products = context.Products.ToList();
 
-        // =========================================================
-        // EXISTING ORDERS
-        // =========================================================
+
 
         var existingOrders = context.Orders.ToList();
 
@@ -382,9 +363,7 @@ public static class DbSeeder
 
         context.SaveChanges();
 
-        // =========================================================
-        // CREATE DEMO ORDERS IF NONE EXIST
-        // =========================================================
+
 
         if (!context.Orders.Any())
         {
