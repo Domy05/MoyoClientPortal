@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 export const routes: Routes = [
   {
     path: 'login',
@@ -8,22 +7,18 @@ export const routes: Routes = [
         (m) => m.Login
       ),
   },
-
   {
     path: '',
     loadComponent: () =>
       import('./shared/layout/layout').then(
         (m) => m.Layout
       ),
-
     children: [
-
       {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
       },
-
       {
         path: 'dashboard',
         loadComponent: () =>
@@ -31,7 +26,6 @@ export const routes: Routes = [
             (m) => m.Dashboard
           ),
       },
-
       {
         path: 'products',
         loadComponent: () =>
@@ -39,7 +33,6 @@ export const routes: Routes = [
             (m) => m.ProductList
           ),
       },
-
       {
         path: 'products/:id',
         loadComponent: () =>
@@ -47,8 +40,6 @@ export const routes: Routes = [
             (m) => m.ProductDetail
           ),
       },
-
-      // Cart
       {
         path: 'cart',
         loadComponent: () =>
@@ -56,8 +47,6 @@ export const routes: Routes = [
             (m) => m.Cart
           ),
       },
-
-      // Orders list
       {
         path: 'orders',
         loadComponent: () =>
@@ -65,8 +54,6 @@ export const routes: Routes = [
             (m) => m.OrderList
           ),
       },
-
-      // Individual order
       {
         path: 'orders/:id',
         loadComponent: () =>
@@ -76,7 +63,6 @@ export const routes: Routes = [
       },
     ],
   },
-
   {
     path: '**',
     redirectTo: '',

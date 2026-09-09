@@ -1,9 +1,6 @@
 <div class="app-shell">
-
   <aside class="sidebar">
-
     <div class="brand">
-
       <svg
         class="leaf-icon"
         viewBox="0 0 24 24"
@@ -14,18 +11,12 @@
           opacity="0.9"
         />
       </svg>
-
       <div>
         <span class="brand-name">Moyo</span>
         <span class="brand-tagline">Client Portal</span>
       </div>
-
     </div>
-
-
     <nav>
-
-      <!-- Dashboard -->
       <a
         routerLink="/dashboard"
         routerLinkActive="active"
@@ -39,12 +30,8 @@
           <path d="M3 11l9-8 9 8" />
           <path d="M5 10v10h14V10" />
         </svg>
-
         Dashboard
       </a>
-
-
-      <!-- Products -->
       <a
         routerLink="/products"
         routerLinkActive="active"
@@ -62,15 +49,11 @@
             height="13"
             rx="2"
           />
-
           <path d="M8 7V5a4 4 0 0 1 8 0v2" />
         </svg>
 
         Products
       </a>
-
-
-      <!-- Cart -->
       <a
         routerLink="/cart"
         routerLinkActive="active"
@@ -83,15 +66,10 @@
         >
           <circle cx="9" cy="20" r="1" />
           <circle cx="18" cy="20" r="1" />
-
           <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6" />
         </svg>
-
         Cart
       </a>
-
-
-      <!-- Orders -->
       <a
         routerLink="/orders"
         routerLinkActive="active"
@@ -109,42 +87,12 @@
             height="15"
             rx="2"
           />
-
           <path d="M9 6V4h6v2" />
           <path d="M9 12h6" />
         </svg>
-
         Orders
       </a>
-
-
-      <!-- Account -->
-      <a
-        routerLink="/account"
-        routerLinkActive="active"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-        >
-          <circle
-            cx="12"
-            cy="8"
-            r="4"
-          />
-
-          <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
-        </svg>
-
-        Account
-      </a>
-
     </nav>
-
-
-    <!-- Logout -->
     <button
       class="logout"
       (click)="onAuthClick()"
@@ -159,20 +107,13 @@
         <path d="M16 17l5-5-5-5" />
         <path d="M21 12H9" />
       </svg>
-
       {{ authService.isLoggedIn() ? 'Log Out' : 'Log In' }}
     </button>
-
   </aside>
 
-
   <div class="main">
-
     <header class="topbar">
-
-      <!-- Existing global search -->
       <div class="search-wrap">
-
         <svg
           class="search-icon"
           viewBox="0 0 24 24"
@@ -185,40 +126,26 @@
             cy="11"
             r="7"
           />
-
           <path d="m21 21-4.3-4.3" />
         </svg>
-
         <input
           type="text"
           placeholder="Search products..."
           class="search"
         />
-
       </div>
-
-
       <div class="user-menu">
-
         <span class="avatar">
           JD
         </span>
-
         <span class="user-name">
           John Doe
         </span>
-
       </div>
-
     </header>
 
-
     <main class="content">
-
       <router-outlet></router-outlet>
-
     </main>
-
   </div>
-
 </div>
