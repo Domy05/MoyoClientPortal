@@ -1,0 +1,39 @@
+frontend/src/app/features/dashboard/dashboard.html
+  h_0aff3b71f739b1 72
+backend/Controllers/OrdersController.cs
+  h_0aff3b71f739b1 33,97
+  h_0aff3b71f739b1 93-96,98-99
+backend/DTOs/OrderDto.cs
+  h_0aff3b71f739b1 19
+backend/Migrations/20260909192243_AddOrderNumber.Designer.cs
+  h_0aff3b71f739b1 1-306
+backend/Migrations/20260909192243_AddOrderNumber.cs
+  h_0aff3b71f739b1 1-29
+backend/Migrations/ClientPortalDbContextModelSnapshot.cs
+  h_0aff3b71f739b1 131-134
+backend/Models/Order.cs
+  h_0aff3b71f739b1 11
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfo.cs
+  h_0aff3b71f739b1 16
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfoInputs.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.csproj.CoreCompileInputs.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.sourcelink.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
+  h_0aff3b71f739b1 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "d751d93f227c9eacdc79006a44101390f47cb84c",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
