@@ -1,219 +1,77 @@
 <div class="cart-page">
 
-  <!-- Page heading -->
   <div class="page-heading">
-
     <h1>Cart</h1>
-
-    <p>
-      Please check your cart details before submitting.
-    </p>
-
+    <p>Please check your cart details before submitting.</p>
   </div>
 
-
-  <!-- Cart card -->
   <div class="cart-card">
 
-    <!-- Table header -->
     <div class="table-header">
-
       <div>Product</div>
-
       <div>Price</div>
-
       <div>Quantity</div>
-
       <div>Total</div>
-
       <div></div>
-
     </div>
 
-
-    <!-- Cart items -->
-    @for (item of cartItems; track item.id) {
-
+    @for (item of cartService.items(); track item.productId) {
       <div class="cart-row">
 
-        <!-- Product -->
         <div class="product-info">
-
           <div class="product-image">
-
-            <img
-              [src]="item.image"
-              [alt]="item.name"
-            />
-
+            <img [src]="item.image" [alt]="item.name" />
           </div>
-
-          <span>
-            {{ item.name }}
-          </span>
-
+          <span>{{ item.name }}</span>
         </div>
 
+        <div class="price">R {{ item.price.toFixed(2) }}</div>
 
-        <!-- Price -->
-        <div class="price">
-
-          R {{ item.price.toFixed(2) }}
-
-        </div>
-
-
-        <!-- Quantity -->
         <div class="quantity-control">
-
-          <button
-            type="button"
-            (click)="decreaseQuantity(item)"
-            [disabled]="item.quantity <= 1"
-          >
-            −
-          </button>
-
-          <span>
-            {{ item.quantity }}
-          </span>
-
-          <button
-            type="button"
-            (click)="increaseQuantity(item)"
-          >
-            +
-          </button>
-
+          <button type="button" (click)="decreaseQuantity(item.productId)" [disabled]="item.quantity <= 1">−</button>
+          <span>{{ item.quantity }}</span>
+          <button type="button" (click)="increaseQuantity(item.productId)">+</button>
         </div>
 
+        <div class="item-total">R {{ getItemTotal(item).toFixed(2) }}</div>
 
-        <!-- Total -->
-        <div class="item-total">
-
-          R {{ getItemTotal(item).toFixed(2) }}
-
-        </div>
-
-
-        <!-- Remove -->
         <div class="remove-cell">
-
-          <button
-            type="button"
-            class="remove-button"
-            (click)="removeItem(item)"
-            aria-label="Remove item"
-          >
-            ×
-          </button>
-
+          <button type="button" class="remove-button" (click)="removeItem(item.productId)" aria-label="Remove item">×</button>
         </div>
 
       </div>
-
     }
 
-
-    <!-- Empty cart -->
-    @if (cartItems.length === 0) {
-
+    @if (cartService.items().length === 0) {
       <div class="empty-cart">
-
         <h2>Your cart is empty</h2>
-
-        <p>
-          Add some products to your cart to continue.
-        </p>
-
-        <button
-          type="button"
-          class="shop-button"
-          (click)="goBack()"
-        >
-          Browse Products
-        </button>
-
+        <p>Add some products to your cart to continue.</p>
+        <button type="button" class="shop-button" (click)="goBack()">Browse Products</button>
       </div>
-
     }
 
-
-    <!-- Totals -->
-    @if (cartItems.length > 0) {
-
+    @if (cartService.items().length > 0) {
       <div class="totals-section">
-
         <div class="totals">
-
-          <!-- Subtotal -->
           <div class="total-row">
-
-            <span>
-              Subtotal
-            </span>
-
-            <strong>
-              R {{ getSubtotal().toFixed(2) }}
-            </strong>
-
+            <span>Subtotal</span>
+            <strong>R {{ getSubtotal().toFixed(2) }}</strong>
           </div>
-
-
-          <!-- VAT -->
           <div class="total-row">
-
-            <span>
-              VAT (15%)
-            </span>
-
-            <strong>
-              R {{ getVat().toFixed(2) }}
-            </strong>
-
+            <span>VAT (15%)</span>
+            <strong>R {{ getVat().toFixed(2) }}</strong>
           </div>
-
-
-          <!-- Grand total -->
           <div class="total-row grand-total">
-
-            <span>
-              Total
-            </span>
-
-            <strong>
-              R {{ getGrandTotal().toFixed(2) }}
-            </strong>
-
+            <span>Total</span>
+            <strong>R {{ getGrandTotal().toFixed(2) }}</strong>
           </div>
-
         </div>
-
       </div>
 
-
-      <!-- Actions -->
       <div class="cart-actions">
-
-        <button
-          type="button"
-          class="back-button"
-          (click)="goBack()"
-        >
-          Back
-        </button>
-
-
-        <button
-          type="button"
-          class="place-order-button"
-          (click)="placeOrder()"
-        >
-          Place Order
-        </button>
-
+        <button type="button" class="back-button" (click)="goBack()">Back</button>
+        <button type="button" class="place-order-button" (click)="placeOrder()">Place Order</button>
       </div>
-
     }
 
   </div>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../../core/models/product.model';
 import { ProductService } from '../../../core/services/product.service';
-import { OrderService } from '../../../core/services/order.service';
+import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -14,7 +14,7 @@ import { OrderService } from '../../../core/services/order.service';
 })
 export class ProductList implements OnInit {
   private productService = inject(ProductService);
-  private orderService = inject(OrderService);
+  private cartService = inject(CartService);
 
   products = signal<Product[]>([]);
   loading = signal(true);
@@ -58,11 +58,17 @@ export class ProductList implements OnInit {
 
   addToOrder(productId: string) {
     const qty = this.getQuantity(productId);
-    this.orderService.addOrder(productId, qty).subscribe(() => {
-      this.addedFeedback.update((f) => ({ ...f, [productId]: true }));
-      setTimeout(() => {
-        this.addedFeedback.update((f) => ({ ...f, [productId]: false }));
-      }, 1500);
-    });
+    const product = this.products().find((p) => p.id === productId);
+    if (!product) return;
+
+    this.cartService.addItem(
+      { productId: product.id, name: product.name, price: product.price, image: product.image },
+      qty
+    );
+
+    this.addedFeedback.update((f) => ({ ...f, [productId]: true }));
+    setTimeout(() => {
+      this.addedFeedback.update((f) => ({ ...f, [productId]: false }));
+    }, 1500);
   }
 }

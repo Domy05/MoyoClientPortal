@@ -17,7 +17,7 @@
     </div>
     <div class="stat-info">
       <p class="label">Total Orders (this month)</p>
-      <p class="value">{{ totalOrders }}</p>
+      <p class="value">{{ totalOrders() }}</p>
       <a routerLink="/orders" class="link">View orders →</a>
     </div>
   </div>
@@ -31,7 +31,7 @@
     </div>
     <div class="stat-info">
       <p class="label">Pending Orders</p>
-      <p class="value">{{ pendingOrders }}</p>
+      <p class="value">{{ pendingOrders() }}</p>
       <a routerLink="/orders" class="link">View orders →</a>
     </div>
   </div>
@@ -67,12 +67,12 @@
       </tr>
     </thead>
     <tbody>
-      @for (order of recentOrders; track order.id) {
+      @for (order of recentOrders(); track order.id) {
         <tr>
           <td>{{ order.id }}</td>
           <td>{{ order.createdAt | date: 'yyyy-MM-dd' }}</td>
           <td><span class="status-badge" [class]="order.status">{{ order.status }}</span></td>
-          <td>{{ order.quantity * 100 | currency: 'ZAR' }}</td>
+          <td>{{ getOrderTotal(order) | currency: 'ZAR' }}</td>
         </tr>
       }
     </tbody>

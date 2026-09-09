@@ -1,29 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { OrderService } from '../../../core/services/order.service';
+import { ProductService } from '../../../core/services/product.service';
+import { Order } from '../../../core/models/order.model';
+import { Product } from '../../../core/models/product.model';
 
-export type OrderStatus =
-  | 'processing'
-  | 'shipped'
-  | 'delivered'
-  | 'cancelled';
-
-export interface OrderItem {
-  id: string;
-  name: string;
-  quantity: number;
-  price: number;
-  total: number;
-}
-
-export interface OrderRow {
-  id: string;
-  orderNumber: string;
-  date: string;
-  total: number;
-  status: OrderStatus;
-  items: OrderItem[];
-}
+type StatusFilter = 'all' | Order['status'];
 
 @Component({
   selector: 'app-order-list',
@@ -32,157 +15,63 @@ export interface OrderRow {
   templateUrl: './order-list.html',
   styleUrl: './order-list.scss',
 })
-export class OrderList {
+export class OrderList implements OnInit {
   private router = inject(Router);
+  private orderService = inject(OrderService);
+  private productService = inject(ProductService);
 
-  selectedStatus: 'all' | OrderStatus = 'all';
-  currentPage = 1;
+  orders = signal<Order[]>([]);
+  products = signal<Product[]>([]);
+  loading = signal(true);
+  selectedStatus = signal<StatusFilter>('all');
+  currentPage = signal(1);
 
-  orders: OrderRow[] = [
-    {
-      id: '1',
-      orderNumber: 'ORD-10034',
-      date: '2025-08-20',
-      total: 2450.0,
-      status: 'processing',
-      items: [
-        {
-          id: '1',
-          name: 'A4 Copy Paper',
-          quantity: 5,
-          price: 89.99,
-          total: 449.95,
-        },
-        {
-          id: '2',
-          name: 'Biro Pens (Box of 50)',
-          quantity: 2,
-          price: 120.0,
-          total: 240.0,
-        },
-      ],
-    },
+  filteredOrders = computed(() => {
+    const status = this.selectedStatus();
+    const orders = this.orders();
+    return status === 'all' ? orders : orders.filter((o) => o.status === status);
+  });
 
-    {
-      id: '2',
-      orderNumber: 'ORD-10023',
-      date: '2025-08-16',
-      total: 1280.0,
-      status: 'shipped',
-      items: [
-        {
-          id: '3',
-          name: 'A4 Lever Arch File',
-          quantity: 8,
-          price: 45.0,
-          total: 360.0,
-        },
-        {
-          id: '4',
-          name: 'Coffee (1kg)',
-          quantity: 4,
-          price: 160.0,
-          total: 640.0,
-        },
-      ],
-    },
-
-    {
-      id: '3',
-      orderNumber: 'ORD-10022',
-      date: '2025-08-15',
-      total: 980.0,
-      status: 'delivered',
-      items: [
-        {
-          id: '5',
-          name: 'A4 Copy Paper',
-          quantity: 10,
-          price: 89.99,
-          total: 899.9,
-        },
-      ],
-    },
-
-    {
-      id: '4',
-      orderNumber: 'ORD-10021',
-      date: '2025-08-10',
-      total: 1120.0,
-      status: 'delivered',
-      items: [
-        {
-          id: '6',
-          name: 'Biro Pens (Box of 50)',
-          quantity: 4,
-          price: 120.0,
-          total: 480.0,
-        },
-        {
-          id: '7',
-          name: 'A4 Lever Arch File',
-          quantity: 5,
-          price: 45.0,
-          total: 225.0,
-        },
-      ],
-    },
-
-    {
-      id: '5',
-      orderNumber: 'ORD-10020',
-      date: '2025-08-06',
-      total: 760.0,
-      status: 'cancelled',
-      items: [
-        {
-          id: '8',
-          name: 'Coffee (1kg)',
-          quantity: 4,
-          price: 160.0,
-          total: 640.0,
-        },
-      ],
-    },
-  ];
-
-  get filteredOrders(): OrderRow[] {
-    if (this.selectedStatus === 'all') {
-      return this.orders;
-    }
-
-    return this.orders.filter(
-      (order) => order.status === this.selectedStatus
-    );
+  ngOnInit() {
+    this.productService.getProducts().subscribe((products) => {
+      this.products.set(products);
+      this.orderService.getOrders().subscribe((orders) => {
+        this.orders.set(orders);
+        this.loading.set(false);
+      });
+    });
   }
 
-  getStatusLabel(status: OrderStatus): string {
+  getOrderTotal(order: Order): number {
+    return order.orderItems.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+  }
+
+  getOrderNumber(order: Order): string {
+    return 'ORD-' + order.id.slice(0, 8).toUpperCase();
+  }
+
+  getStatusLabel(status: Order['status']): string {
     switch (status) {
-      case 'processing':
-        return 'Processing';
-
-      case 'shipped':
-        return 'Shipped';
-
-      case 'delivered':
-        return 'Delivered';
-
-      case 'cancelled':
-        return 'Cancelled';
+      case 'pending': return 'Pending';
+      case 'confirmed': return 'Processing';
+      case 'shipped': return 'Shipped';
+      case 'cancelled': return 'Cancelled';
     }
   }
 
-  viewOrder(order: OrderRow): void {
+  selectStatus(status: StatusFilter) {
+    this.selectedStatus.set(status);
+  }
+
+  viewOrder(order: Order): void {
     this.router.navigate(['/orders', order.id]);
   }
 
   previousPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
+    if (this.currentPage() > 1) this.currentPage.update((p) => p - 1);
   }
 
   nextPage(): void {
-    this.currentPage++;
+    this.currentPage.update((p) => p + 1);
   }
 }

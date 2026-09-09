@@ -1,228 +1,63 @@
 <div class="order-page">
 
-  <!-- Page heading -->
   <div class="page-heading">
-
     <h1>My Orders</h1>
-
-    <p>
-      View and track your orders.
-    </p>
-
+    <p>View and track your orders.</p>
   </div>
 
-
-  <!-- Filters -->
   <div class="filters">
-
-    <button
-      type="button"
-      class="filter-button"
-      [class.active]="selectedStatus === 'all'"
-      (click)="selectedStatus = 'all'"
-    >
-      All orders
-    </button>
-
-    <button
-      type="button"
-      class="filter-button"
-      [class.active]="selectedStatus === 'processing'"
-      (click)="selectedStatus = 'processing'"
-    >
-      Processing
-    </button>
-
-    <button
-      type="button"
-      class="filter-button"
-      [class.active]="selectedStatus === 'shipped'"
-      (click)="selectedStatus = 'shipped'"
-    >
-      Shipped
-    </button>
-
-    <button
-      type="button"
-      class="filter-button"
-      [class.active]="selectedStatus === 'delivered'"
-      (click)="selectedStatus = 'delivered'"
-    >
-      Delivered
-    </button>
-
-    <button
-      type="button"
-      class="filter-button"
-      [class.active]="selectedStatus === 'cancelled'"
-      (click)="selectedStatus = 'cancelled'"
-    >
-      Cancelled
-    </button>
-
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'all'" (click)="selectStatus('all')">All orders</button>
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'pending'" (click)="selectStatus('pending')">Pending</button>
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'confirmed'" (click)="selectStatus('confirmed')">Processing</button>
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'shipped'" (click)="selectStatus('shipped')">Shipped</button>
+    <button type="button" class="filter-button" [class.active]="selectedStatus() === 'cancelled'" (click)="selectStatus('cancelled')">Cancelled</button>
   </div>
 
+  @if (loading()) {
+    <p class="loading-text">Loading orders...</p>
+  } @else {
+    <div class="orders-card">
 
-  <!-- Orders table -->
-  <div class="orders-card">
+      <div class="table-row table-header">
+        <div>Order #</div>
+        <div>Date</div>
+        <div>Total</div>
+        <div>Status</div>
+        <div>Actions</div>
+        <div></div>
+      </div>
 
-    <!-- Table header -->
-    <div class="table-row table-header">
+      @for (order of filteredOrders(); track order.id) {
+        <div class="table-row order-row">
+          <div class="order-number">{{ getOrderNumber(order) }}</div>
+          <div class="order-date">{{ order.createdAt | date: 'yyyy-MM-dd' }}</div>
+          <div class="order-total">R {{ getOrderTotal(order).toFixed(2) }}</div>
+          <div>
+            <span class="status-badge" [class]="order.status">
+              {{ getStatusLabel(order.status) }}
+            </span>
+          </div>
+          <div class="action-cell">
+            <button type="button" class="view-button" (click)="viewOrder(order)">View</button>
+          </div>
+        </div>
+      }
 
-      <div>Order #</div>
-
-      <div>Date</div>
-
-      <div>Total</div>
-
-      <div>Status</div>
-
-      <div>Actions</div>
-
-      <div></div>
+      @if (filteredOrders().length === 0) {
+        <div class="empty-state">No orders found.</div>
+      }
 
     </div>
 
-
-    <!-- Orders -->
-    @for (order of filteredOrders; track order.id) {
-
-      <div class="table-row order-row">
-
-        <!-- Order number -->
-        <div class="order-number">
-          {{ order.orderNumber }}
-        </div>
-
-
-        <!-- Date -->
-        <div class="order-date">
-          {{ order.date }}
-        </div>
-
-
-        <!-- Total -->
-        <div class="order-total">
-          R {{ order.total.toFixed(2) }}
-        </div>
-
-
-        <!-- Status -->
-        <div>
-
-          <span
-            class="status-badge"
-            [class.processing]="order.status === 'processing'"
-            [class.shipped]="order.status === 'shipped'"
-            [class.delivered]="order.status === 'delivered'"
-            [class.cancelled]="order.status === 'cancelled'"
-          >
-            {{ getStatusLabel(order.status) }}
-          </span>
-
-        </div>
-
-
-        <!-- Actions -->
-        <div class="action-cell">
-
-          <button
-            type="button"
-            class="view-button"
-            (click)="viewOrder(order)"
-          >
-            View
-          </button>
-
-        </div>
-
-      </div>
-
-    }
-
-
-    <!-- Empty state -->
-    @if (filteredOrders.length === 0) {
-
-      <div class="empty-state">
-        No orders found.
-      </div>
-
-    }
-
-  </div>
-
-
-  <!-- Pagination -->
-  <div class="pagination">
-
-    <!-- Previous -->
-    <button
-      type="button"
-      class="pagination-button"
-      [disabled]="currentPage === 1"
-      (click)="previousPage()"
-      aria-label="Previous page"
-    >
-
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path d="M15 18l-6-6 6-6"></path>
-      </svg>
-
-    </button>
-
-
-    <!-- Page 1 -->
-    <button
-      type="button"
-      class="pagination-button active"
-    >
-      1
-    </button>
-
-
-    <!-- Page 2 -->
-    <button
-      type="button"
-      class="pagination-button"
-    >
-      2
-    </button>
-
-
-    <!-- Page 3 -->
-    <button
-      type="button"
-      class="pagination-button"
-    >
-      3
-    </button>
-
-
-    <!-- Next -->
-    <button
-      type="button"
-      class="pagination-button"
-      (click)="nextPage()"
-      aria-label="Next page"
-    >
-
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path d="M9 6l6 6-6 6"></path>
-      </svg>
-
-    </button>
-
-  </div>
+    <div class="pagination">
+      <button type="button" class="pagination-button" [disabled]="currentPage() === 1" (click)="previousPage()" aria-label="Previous page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"></path></svg>
+      </button>
+      <button type="button" class="pagination-button active">{{ currentPage() }}</button>
+      <button type="button" class="pagination-button" (click)="nextPage()" aria-label="Next page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"></path></svg>
+      </button>
+    </div>
+  }
 
 </div>
