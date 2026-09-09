@@ -8,6 +8,7 @@ public partial class Order
     public Guid Id { get; set; }
 
     public Guid ClientId { get; set; }
+    public string OrderNumber { get; set; } = null!;
 
     public string Status { get; set; } = null!;
 

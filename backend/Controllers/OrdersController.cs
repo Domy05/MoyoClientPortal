@@ -30,6 +30,7 @@ public OrdersController(ClientPortalDbContext context)
 private static OrderDto ToDto(Order order) => new()
 {
     Id = order.Id,
+    OrderNumber = order.OrderNumber,
     Status = order.Status,
     CreatedAt = order.CreatedAt,
 
@@ -89,12 +90,13 @@ public async Task<IActionResult> CreateOrder(
         return NotFound("Client not found.");
     }
 
-    var order = new Order
-    {
-        Id = Guid.NewGuid(),
-        ClientId = clientId,
-        Status = "pending",
-    };
+var order = new Order
+{
+    Id = Guid.NewGuid(),
+    ClientId = clientId,
+    OrderNumber = $"ORD-{DateTime.UtcNow:yyyyMMddHHmmss}",
+    Status = "pending",
+};
 
     foreach (var item in request.Items)
     {

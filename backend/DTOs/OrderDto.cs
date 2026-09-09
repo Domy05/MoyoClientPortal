@@ -16,4 +16,5 @@ public class OrderDto
     public string Status { get; set; } = null!;
     public DateTime CreatedAt { get; set; }
     public List<OrderItemDto> OrderItems { get; set; } = new();
+    public string OrderNumber { get; set; } = null!;
 }
