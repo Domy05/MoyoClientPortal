@@ -1,0 +1,52 @@
+.github/workflows/azure-deploy.yml
+  h_0aff3b71f739b1 1-56
+.github/workflows/backend-ci.yml
+  h_0aff3b71f739b1 17,20
+backend/Controllers/CartController.cs
+  h_0aff3b71f739b1 3,189
+backend/Controllers/OrderManagementIntegrationController.cs
+  h_0aff3b71f739b1 1-55
+backend/Controllers/OrdersController.cs
+  h_0aff3b71f739b1 6-7,21,26,29-31,34,153-155
+backend/Controllers/ProductsController.cs
+  h_0aff3b71f739b1 1-2,8,12,14,16,20,22,27-29,31-37,40
+backend/Integration/OrderManagementMessages.cs
+  h_0aff3b71f739b1 1-65
+backend/Integration/OrderManagementWorker.cs
+  h_0aff3b71f739b1 1-153
+backend/Integration/ProductSystemClient.cs
+  h_0aff3b71f739b1 1-97
+backend/Program.cs
+  h_0aff3b71f739b1 1-122
+backend/appsettings.json
+  h_0aff3b71f739b1 1-30
+docs/requirements-implementation.md
+  h_0aff3b71f739b1 1-14
+frontend/src/app/app.config.ts
+  h_0aff3b71f739b1 4,6,9-14
+frontend/src/app/app.routes.ts
+  h_0aff3b71f739b1 12-18,80
+frontend/src/app/core/models/order.model.ts
+  h_0aff3b71f739b1 10,13
+frontend/src/app/core/services/auth.interceptor.ts
+  h_0aff3b71f739b1 1-19
+frontend/src/app/core/services/auth.service.ts
+  h_0aff3b71f739b1 4,20-24,27-28,36-40,48-124,144-183,185-200
+frontend/src/app/core/services/oidc-config.ts
+  h_0aff3b71f739b1 1-18
+frontend/src/app/features/auth/callback/callback.ts
+  h_0aff3b71f739b1 1-26
+frontend/src/app/features/auth/login/login.ts
+  h_0aff3b71f739b1 32-38,63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "c11fe859314172273a1785f0b8b691f98ea872a3",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
