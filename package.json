@@ -6,7 +6,13 @@
 "scripts": {
   "dev:frontend": "npm --prefix frontend run start",
   "dev:backend": "dotnet watch run --project backend",
-  "dev": "concurrently -n FRONTEND,BACKEND -c blue,green \"npm run dev:frontend\" \"npm run dev:backend\""
+  "dev": "concurrently -n FRONTEND,BACKEND -c blue,green \"npm run dev:frontend\" \"npm run dev:backend\"",
+  "test:frontend": "npm --prefix frontend run test:ci",
+  "test:backend": "npm --prefix backend run test",
+  "test": "npm run test:frontend && npm run test:backend",
+  "test:coverage:frontend": "npm --prefix frontend run test:coverage",
+  "test:coverage:backend": "npm --prefix backend run test:coverage",
+  "test:coverage": "npm run test:coverage:frontend && npm run test:coverage:backend"
 },
   "keywords": [],
   "author": "",

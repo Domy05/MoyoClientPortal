@@ -1,37 +1,71 @@
+import { provideHttpClient } from '@angular/common/http';
+import {
+  HttpTestingController,
+  provideHttpClientTesting,
+} from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { Product } from '../../../core/models/product.model';
 import { ProductList } from './product-list';
 
+const PRODUCTS: Product[] = [
+  {
+    id: '1',
+    name: 'Notebook',
+    price: 5,
+    stock: 10,
+    category: 'Paper',
+    image: 'notebook.jpg',
+  },
+  {
+    id: '2',
+    name: 'Desk Organizer',
+    price: 12,
+    stock: 4,
+    category: 'Office',
+    image: 'organizer.jpg',
+  },
+];
+
 describe('ProductList', () => {
+  let httpMock: HttpTestingController;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProductList],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     }).compileComponents();
+
+    httpMock = TestBed.inject(HttpTestingController);
   });
+
+  afterEach(() => httpMock.verify());
 
   it('should create', () => {
     const fixture = TestBed.createComponent(ProductList);
-    const component = fixture.componentInstance;
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should load products on init', async () => {
+  it('should load products on init', () => {
     const fixture = TestBed.createComponent(ProductList);
-    const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    await new Promise((resolve) => setTimeout(resolve, 350));
+    const request = httpMock.expectOne('http://localhost:5141/api/products');
+    expect(request.request.method).toBe('GET');
+    request.flush(PRODUCTS);
 
-    expect(component.products().length).toBeGreaterThan(0);
+    expect(fixture.componentInstance.products()).toEqual(PRODUCTS);
+    expect(fixture.componentInstance.loading()).toBe(false);
   });
 
-  it('should filter products by category when a pill is selected', async () => {
+  it('should filter products by category when a pill is selected', () => {
     const fixture = TestBed.createComponent(ProductList);
-    const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    await new Promise((resolve) => setTimeout(resolve, 350));
+    const request = httpMock.expectOne('http://localhost:5141/api/products');
+    request.flush(PRODUCTS);
 
-    component.selectFilter('Paper');
-    expect(component.filteredProducts().every((p) => p.category === 'Paper')).toBe(true);
+    fixture.componentInstance.selectFilter('Paper');
+
+    expect(fixture.componentInstance.filteredProducts()).toEqual([PRODUCTS[0]]);
   });
 });

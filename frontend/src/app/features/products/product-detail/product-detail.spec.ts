@@ -1,13 +1,32 @@
+import { provideHttpClient } from '@angular/common/http';
+import {
+  HttpTestingController,
+  provideHttpClientTesting,
+} from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, provideRouter } from '@angular/router';
+import { Product } from '../../../core/models/product.model';
 import { ProductDetail } from './product-detail';
 
+const PRODUCT: Product = {
+  id: '1',
+  name: 'Notebook',
+  price: 5,
+  stock: 10,
+  category: 'Paper',
+  image: 'notebook.jpg',
+};
+
 describe('ProductDetail', () => {
+  let httpMock: HttpTestingController;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProductDetail],
       providers: [
         provideRouter([]),
+        provideHttpClient(),
+        provideHttpClientTesting(),
         {
           provide: ActivatedRoute,
           useValue: {
@@ -16,21 +35,26 @@ describe('ProductDetail', () => {
         },
       ],
     }).compileComponents();
+
+    httpMock = TestBed.inject(HttpTestingController);
   });
+
+  afterEach(() => httpMock.verify());
 
   it('should create', () => {
     const fixture = TestBed.createComponent(ProductDetail);
-    const component = fixture.componentInstance;
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should load the product matching the route id', async () => {
+  it('should load the product matching the route id', () => {
     const fixture = TestBed.createComponent(ProductDetail);
-    const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    await new Promise((resolve) => setTimeout(resolve, 350));
+    const request = httpMock.expectOne('http://localhost:5141/api/products/1');
+    expect(request.request.method).toBe('GET');
+    request.flush(PRODUCT);
 
-    expect(component.product()?.id).toBe('1');
+    expect(fixture.componentInstance.product()).toEqual(PRODUCT);
+    expect(fixture.componentInstance.loading()).toBe(false);
   });
 });
