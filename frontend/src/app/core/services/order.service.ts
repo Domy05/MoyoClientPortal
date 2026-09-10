@@ -4,7 +4,9 @@ import { Order } from '../models/order.model';
 
 const API_URL = 'http://localhost:5141/api/orders';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class OrderService {
   private http = inject(HttpClient);
 
@@ -16,7 +18,13 @@ export class OrderService {
     return this.http.get<Order>(`${API_URL}/${id}`);
   }
 
-  addOrder(items: { productId: string; quantity: number; unitPrice: number }[]) {
-    return this.http.post<Order>(API_URL, { items });
+  addOrder(
+    clientId: string,
+    items: { productId: string; quantity: number }[]
+  ) {
+    return this.http.post<Order>(
+      `${API_URL}/${clientId}`,
+      { items }
+    );
   }
 }

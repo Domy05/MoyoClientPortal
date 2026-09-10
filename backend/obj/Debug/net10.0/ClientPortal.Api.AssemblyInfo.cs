@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClientPortal.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9b59f3831edc604b6569f7b96513250add23096")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27f89d3e96fd1dd80e05da69fec8405e3d0d8730")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClientPortal.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClientPortal.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

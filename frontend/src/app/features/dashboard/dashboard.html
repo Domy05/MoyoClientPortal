@@ -69,7 +69,7 @@
     <tbody>
       @for (order of recentOrders(); track order.id) {
         <tr>
-          <td>{{ order.id }}</td>
+          <td>ORD-{{ order.id.substring(0, 8).toUpperCase() }}</td>
           <td>{{ order.createdAt | date: 'yyyy-MM-dd' }}</td>
           <td><span class="status-badge" [class]="order.status">{{ order.status }}</span></td>
           <td>{{ getOrderTotal(order) | currency: 'ZAR' }}</td>
