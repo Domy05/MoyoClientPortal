@@ -29,6 +29,13 @@ export class Login {
   }
 
   submit() {
+    if (this.authService.isOidcConfigured()) {
+      void this.authService.startOidcLogin().catch(() => {
+        alert('Unable to start secure sign in.');
+      });
+      return;
+    }
+
     if (this.form.invalid) {
       return;
     }

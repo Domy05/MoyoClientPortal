@@ -10,6 +10,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'auth/callback',
+    loadComponent: () =>
+      import('./features/auth/callback/callback').then(
+        (m) => m.AuthCallback
+      ),
+  },
+  {
     path: '',
     canActivate: [authGuard],
     loadComponent: () =>

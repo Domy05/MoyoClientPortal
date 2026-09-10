@@ -1,64 +1,40 @@
+using ClientPortal.Api.Integration;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ClientPortal.Api.Data;
-using ClientPortal.Api.DTOs;
 
 namespace ClientPortal.Api.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    private readonly ClientPortalDbContext _context;
+    private readonly IProductSystemClient _productSystem;
 
-    public ProductsController(ClientPortalDbContext context)
+    public ProductsController(IProductSystemClient productSystem)
     {
-        _context = context;
+        _productSystem = productSystem;
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetProducts()
+    public async Task<IActionResult> GetProducts(CancellationToken cancellationToken)
     {
-        var products = await _context.Products
-            .Select(p => new ProductDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Price = p.Price,
-                Stock = p.Stock,
-                Category = p.Category,
-                Image = p.Image,
-                Description = p.Description,
-                Brand = p.Brand,
-                PackSize = p.PackSize,
-                Weight = p.Weight,
-                Unit = p.Unit,
-            })
-            .ToListAsync();
+        var products = await _productSystem.GetProductsAsync(cancellationToken);
         return Ok(products);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetProduct(Guid id)
+    public async Task<IActionResult> GetProduct(
+        Guid id,
+        CancellationToken cancellationToken)
     {
-        var product = await _context.Products
-            .Where(p => p.Id == id)
-            .Select(p => new ProductDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Price = p.Price,
-                Stock = p.Stock,
-                Category = p.Category,
-                Image = p.Image,
-                Description = p.Description,
-                Brand = p.Brand,
-                PackSize = p.PackSize,
-                Weight = p.Weight,
-                Unit = p.Unit,
-            })
-            .FirstOrDefaultAsync();
-        if (product == null) return NotFound();
+        var product = await _productSystem.GetProductAsync(id, cancellationToken);
+
+        if (product is null)
+        {
+            return NotFound();
+        }
+
         return Ok(product);
     }
 }

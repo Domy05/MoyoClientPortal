@@ -7,7 +7,7 @@ export interface OrderItem {
 
 export interface Order {
   id: string;
-  status: 'pending' | 'confirmed' | 'shipped' | 'cancelled';
+  status: 'pending' | 'confirmed' | 'shipped' | 'cancelled' | 'delivered';
   createdAt: string;
   orderItems: OrderItem[];
 }

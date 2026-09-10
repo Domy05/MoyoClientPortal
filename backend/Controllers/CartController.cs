@@ -1,5 +1,6 @@
 using ClientPortal.Api.Data;
 using ClientPortal.Api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
