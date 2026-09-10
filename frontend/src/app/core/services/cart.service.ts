@@ -1,6 +1,7 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { environment } from '../../../environments/environment';
 
 export interface CartItem {
   productId: string;
@@ -17,7 +18,7 @@ export class CartService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
 
-  private apiUrl = 'http://localhost:5141/api/cart';
+  private apiUrl = `${environment.apiBaseUrl}/cart`;
 
   items = signal<CartItem[]>([]);
 

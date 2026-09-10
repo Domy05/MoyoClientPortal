@@ -1,0 +1,10 @@
+export const environment = {
+  production: false,
+  apiBaseUrl: 'http://localhost:5141/api',
+  oidc: {
+    authority: '',
+    clientId: '',
+    scope: 'openid profile email',
+    apiAudience: '',
+  },
+};

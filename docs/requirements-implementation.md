@@ -12,3 +12,5 @@ This solution now contains the following architecture boundaries:
 - Azure PaaS deployment workflow in `.github/workflows/azure-deploy.yml`.
 
 The local in-memory adapter keeps development runnable without external accounts or credentials. Production deployment must configure the identity provider, Product System URL, Order Management URL, webhook key, database connection string, and Azure GitHub secrets through deployment settings rather than committing secrets to source control.
+
+See [Solution Architecture](solution-architecture.md) for the complete architecture, synchronous/asynchronous flows, security, scalability, and deployment decisions. See [Production Deployment](production-deployment.md) for the deployment checklist and required settings.

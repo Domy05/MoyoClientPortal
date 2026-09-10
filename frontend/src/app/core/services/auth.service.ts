@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 import { oidcConfig } from './oidc-config';
+import { environment } from '../../../environments/environment';
 
 export interface LoginRequest {
   email: string;
@@ -42,7 +43,7 @@ export class AuthService {
   login(credentials: LoginRequest) {
     return this.http
       .post<LoginResponse>(
-        'http://localhost:5141/api/auth/login',
+        `${environment.apiBaseUrl}/auth/login`,
         credentials
       )
       .pipe(tap((response) => this.storeSession(response)));
