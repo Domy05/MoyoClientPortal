@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using ClientPortal.Api.Data;
 using ClientPortal.Api.Models;
 using ClientPortal.Api.DTOs;
+using ClientPortal.Api.Integration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ClientPortal.Api.Controllers;
 
@@ -16,15 +18,20 @@ List<OrderItemRequest> Items
 );
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class OrdersController : ControllerBase
 {
 private readonly ClientPortalDbContext _context;
+private readonly IOrderManagementPlatform _orderManagement;
 
 
-public OrdersController(ClientPortalDbContext context)
+public OrdersController(
+    ClientPortalDbContext context,
+    IOrderManagementPlatform orderManagement)
 {
     _context = context;
+    _orderManagement = orderManagement;
 }
 
 private static OrderDto ToDto(Order order) => new()
@@ -142,6 +149,9 @@ var order = new Order
     _context.Orders.Add(order);
 
     await _context.SaveChangesAsync();
+
+    await _orderManagement.PublishNewOrderAsync(
+        new NewOrderMessage(order.Id, order.ClientId, DateTime.UtcNow));
 
 
     await _context.Entry(order)
