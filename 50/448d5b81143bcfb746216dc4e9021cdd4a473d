@@ -1,0 +1,28 @@
+backend/bin/Debug/net10.0/appsettings.Development.json
+  h_0aff3b71f739b1 1-19
+backend/bin/Debug/net10.0/appsettings.json
+  h_0aff3b71f739b1 3,6,23-25
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfo.cs
+  h_0aff3b71f739b1 16
+backend/obj/Debug/net10.0/ClientPortal.Api.AssemblyInfoInputs.cache
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/ClientPortal.Api.sourcelink.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
+  h_0aff3b71f739b1 1
+backend/obj/Debug/net10.0/rpswa.dswa.cache.json
+  h_0aff3b71f739b1 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "50448d5b81143bcfb746216dc4e9021cdd4a473d",
+  "prompts": {},
+  "humans": {
+    "h_0aff3b71f739b1": {
+      "author": "Dominiqu <u24580482@tuks.co.za>"
+    }
+  }
+}
