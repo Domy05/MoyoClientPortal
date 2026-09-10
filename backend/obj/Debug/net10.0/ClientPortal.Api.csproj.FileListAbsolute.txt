@@ -169,3 +169,4 @@
 /Users/dominiqunigatu/Documents/MoyoClientPortal/backend/obj/Debug/net10.0/ref/ClientPortal.Api.dll
 /Users/dominiqunigatu/Documents/MoyoClientPortal/backend/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/dominiqunigatu/Documents/MoyoClientPortal/backend/bin/Debug/net10.0/Microsoft.Bcl.Cryptography.dll
+/Users/dominiqunigatu/Documents/MoyoClientPortal/backend/bin/Debug/net10.0/package.json
