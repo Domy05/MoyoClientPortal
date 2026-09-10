@@ -1,3 +1,5 @@
+import { environment } from '../../../environments/environment';
+
 export interface OidcConfig {
   authority: string;
   clientId: string;
@@ -9,10 +11,11 @@ export interface OidcConfig {
 // Set authority and clientId for the selected OAuth 2.0/OpenID Connect
 // provider in the deployment configuration. Empty values keep the local
 // development login available until a provider is configured.
+
 export const oidcConfig: OidcConfig = {
-  authority: '',
-  clientId: '',
-  scope: 'openid profile email',
+  authority: environment.oidc.authority,
+  clientId: environment.oidc.clientId,
+  scope: environment.oidc.scope,
   redirectUri: `${window.location.origin}/auth/callback`,
-  apiAudience: '',
+  apiAudience: environment.oidc.apiAudience,
 };

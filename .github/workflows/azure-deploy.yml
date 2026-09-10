@@ -1,6 +1,9 @@
 name: Azure PaaS Deployment
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -43,6 +46,28 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
 
       - run: npm ci
+        working-directory: frontend
+      - name: Configure production frontend
+        env:
+          API_BASE_URL: ${{ vars.AZURE_BACKEND_URL }}
+          OIDC_AUTHORITY: ${{ vars.OIDC_AUTHORITY }}
+          OIDC_CLIENT_ID: ${{ vars.OIDC_CLIENT_ID }}
+          OIDC_SCOPE: ${{ vars.OIDC_SCOPE }}
+          OIDC_API_AUDIENCE: ${{ vars.OIDC_API_AUDIENCE }}
+        run: |
+          test -n "$API_BASE_URL"
+          cat > src/environments/environment.production.ts <<EOF
+          export const environment = {
+            production: true,
+            apiBaseUrl: '${API_BASE_URL%/}/api',
+            oidc: {
+              authority: '$OIDC_AUTHORITY',
+              clientId: '$OIDC_CLIENT_ID',
+              scope: '${OIDC_SCOPE:-openid profile email}',
+              apiAudience: '$OIDC_API_AUDIENCE',
+            },
+          };
+          EOF
         working-directory: frontend
       - run: npm run build -- --configuration production
         working-directory: frontend

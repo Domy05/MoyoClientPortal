@@ -77,12 +77,26 @@ builder.Services.AddAuthorization(options =>
         .Build();
 });
 
+var configuredOrigins = builder.Configuration["Cors:AllowedOrigins"]?
+    .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+    ?? Array.Empty<string>();
+
+if (configuredOrigins.Length == 0 && builder.Environment.IsDevelopment())
+{
+    configuredOrigins = new[] { "http://localhost:4200" };
+}
+
+if (configuredOrigins.Length == 0)
+{
+    throw new InvalidOperationException("Cors:AllowedOrigins must be configured outside development.");
+}
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins("http://localhost:4200")
+            .WithOrigins(configuredOrigins)
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
@@ -111,8 +125,11 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ClientPortalDbContext>();
+    db.Database.Migrate();
     DbSeeder.Seed(db);
 }
+
+app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
 
 app.UseHttpsRedirection();
 app.UseCors("AllowFrontend");
