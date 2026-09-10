@@ -1,0 +1,410 @@
+.cart-page {
+  width: 100%;
+  color: #16281f;
+}
+
+/* =========================================PAGE HEADING ========================================= */
+
+.page-heading {
+  margin-bottom: 32px;
+}
+
+.page-heading h1 {
+  margin: 0 0 8px;
+  color: #123f3a;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.page-heading p {
+  margin: 0;
+  color: #6c9792;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ========================================= CART CARD ========================================= */
+
+.cart-card {
+  width: 100%;
+  overflow: hidden;
+  background: #fffefa;
+  border: 2px solid #070707;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(22, 40, 31, 0.05);
+}
+
+/* ========================================= TABLE HEADER ========================================= */
+
+.table-header {
+  display: grid;
+  grid-template-columns:
+    2.4fr
+    1.2fr
+    1.2fr
+    1.2fr
+    40px;
+  align-items: center;
+  min-height: 60px;
+  padding: 0 28px;
+  border-bottom: 1px solid #e5ddc8;
+  background: #f7f4eb;
+  color: #2b5b56;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+/* ========================================= CART ROW ========================================= */
+
+.cart-row {
+  display: grid;
+  grid-template-columns:
+    2.4fr
+    1.2fr
+    1.2fr
+    1.2fr
+    40px;
+  align-items: center;
+  min-height: 96px;
+  padding: 0 28px;
+  border-bottom: 1px solid #e5ddc8;
+  background: #fffefa;
+  color: #527c77;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.cart-row:hover {
+  background: #faf9f4;
+}
+
+.cart-row:last-of-type {
+  border-bottom: none;
+}
+
+/* ========================================= PRODUCT ========================================= */
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.product-info > span {
+  color: #356a65;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.product-image {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f7f4eb;
+  border: 1px solid #e1dbc9;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ========================================= PRICE ========================================= */
+
+.price {
+  color: #527d78;
+  font-size: 0.9rem;
+}
+
+/* ========================================= QUANTITY ========================================= */
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  overflow: hidden;
+  border: 1px solid #b8cfc4;
+  border-radius: 7px;
+  background: #fffefa;
+}
+
+.quantity-control button {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #28534e;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.quantity-control button:hover:not(:disabled) {
+  background: #f0ede3;
+}
+
+.quantity-control button:disabled {
+  color: #b5beb9;
+  cursor: default;
+}
+
+.quantity-control span {
+  width: 34px;
+  text-align: center;
+  color: #315e59;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* ========================================= ITEM TOTAL ========================================= */
+
+.item-total {
+  color: #315e59;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ========================================= REMOVE ========================================= */
+
+.remove-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.remove-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #9a6f69;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.remove-button:hover {
+  background: #f7e8e5;
+  color: #c4524b;
+}
+
+/* ========================================= TOTALS SECTION ========================================= */
+
+.totals-section {
+  display: flex;
+  justify-content: flex-end;
+  padding: 28px 28px 10px;
+  background: #fffefa;
+  border-top: 1px solid #e5ddc8;
+}
+
+.totals {
+  width: 420px;
+}
+
+/* ========================================= TOTAL ROW ========================================= */
+
+.total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid #e5ddc8;
+  color: #527d78;
+  font-size: 0.92rem;
+}
+
+.total-row strong {
+  color: #3e6a65;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+/* ========================================= GRAND TOTAL ========================================= */
+
+.total-row.grand-total {
+  padding-top: 17px;
+  border-bottom: none;
+}
+
+.grand-total span {
+  color: #1e4944;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.grand-total strong {
+  color: #1f6b45;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+/* ========================================= CART ACTIONS ========================================= */
+
+.cart-actions {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  padding: 24px 28px 26px;
+  background: #fffefa;
+}
+
+/* ========================================= BACK BUTTON ========================================= */
+
+.back-button {
+  height: 50px;
+  border: 2px solid #1f6b45;
+  border-radius: 8px;
+  background: #fffefa;
+  color: #1f6b45;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.back-button:hover {
+  background: #f0f4ef;
+  color: #16281f;
+}
+
+.back-button:active {
+  transform: scale(0.99);
+}
+
+/* ========================================= PLACE ORDER ========================================= */
+
+.place-order-button {
+  height: 50px;
+  border: 2px solid #1f6b45;
+  border-radius: 8px;
+  background: #1f6b45;
+  color: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.place-order-button:hover {
+  background: #16281f;
+  border-color: #16281f;
+}
+
+.place-order-button:active {
+  transform: scale(0.99);
+}
+
+/* ========================================= EMPTY CARt ========================================= */
+
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: 40px;
+  background: #fffefa;
+  text-align: center;
+}
+
+.empty-cart h2 {
+  margin: 0 0 8px;
+  color: #234d48;
+  font-size: 1.3rem;
+}
+
+.empty-cart p {
+  margin: 0 0 20px;
+  color: #71908c;
+  font-size: 0.9rem;
+}
+
+.shop-button {
+  height: 44px;
+  padding: 0 20px;
+  border: 2px solid #1f6b45;
+  border-radius: 7px;
+  background: #1f6b45;
+  color: white;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.shop-button:hover {
+  background: #16281f;
+  border-color: #16281f;
+}
+
+/* ========================================= RESPONSIVE ========================================= */
+
+@media (max-width: 900px) {
+  .cart-card {
+    overflow-x: auto;
+  }
+
+  .table-header,
+  .cart-row {
+    min-width: 850px;
+  }
+
+  .totals-section {
+    min-width: 850px;
+  }
+
+  .cart-actions {
+    min-width: 850px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-heading h1 {
+    font-size: 1.7rem;
+  }
+
+  .page-heading p {
+    font-size: 0.9rem;
+  }
+
+  .totals-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .cart-actions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

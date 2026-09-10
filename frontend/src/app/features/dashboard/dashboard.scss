@@ -1,0 +1,143 @@
+.hero {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  height: 200px;
+  border: 1px solid #e5ddc8;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(15, 26, 20, 0.8) 0%, rgba(15, 26, 20, 0.3) 50%, transparent 100%);
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 32px;
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--bone);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #d9d0b8;
+  display: flex;
+  align-items: center; 
+  gap: 14px;
+}
+
+.icon-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #16281f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.stat-info {
+  flex: 1;
+}
+
+.label {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.link {
+  color: #2f4f3f;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.recent-orders {
+  border: 1px solid #d9d0b8;
+  border-radius: 12px;
+  padding: 20px;
+  background: var(--bone);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bone);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e5ddc8;
+}
+
+th, td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5ddc8;
+}
+
+th {
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.pending, .status-badge.confirmed { background: #e6f4ea; color: #1e7a3d; }
+.status-badge.shipped { background: #e6ecf7; color: #2952cc; }
+.status-badge.cancelled { background: #fde8e8; color: #c0392b; }

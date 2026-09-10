@@ -1,0 +1,129 @@
+@if (loading()) {
+  <p class="loading-text">Loading product...</p>
+} @else if (product(); as p) {
+
+  <div class="detail-grid">
+    <div class="gallery">
+      <img
+        [src]="activeImage()"
+        [alt]="p.name"
+        class="main-image"
+      />
+
+      @if (p.images && p.images.length) {
+        <div class="thumbnails">
+          @for (img of p.images; track img) {
+            <img
+              [src]="img"
+              [alt]="p.name"
+              class="thumbnail"
+              [class.active]="activeImage() === img"
+              (click)="selectImage(img)"
+            />
+          }
+        </div>
+      }
+    </div>
+
+    <div class="info-panel">
+      <h1>{{ p.name }}</h1>
+      <p class="price">
+        R {{ p.price.toFixed(2) }} / {{ p.unit || 'unit' }}
+      </p>
+      <p class="description">
+        {{ p.description }}
+      </p>
+      <div class="meta-row">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+        >
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M8 12l3 3 5-6"/>
+        </svg>
+        <div>
+          <p class="meta-label">In Stock</p>
+          <p class="meta-value">
+            ({{ p.stock }} {{ p.unit || 'units' }} available)
+          </p>
+        </div>
+      </div>
+
+      @if (p.weight) {
+        <div class="meta-row">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+            <path d="M12 3v18M3 12h18"/>
+          </svg>
+          <p class="meta-value">
+            {{ p.weight }}
+          </p>
+        </div>
+      }
+
+      @if (p.packSize) {
+        <div class="meta-row">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+            <rect x="4" y="4" width="16" height="16" rx="2"/>
+          </svg>
+          <p class="meta-value">
+            {{ p.packSize }}
+          </p>
+        </div>
+
+      }
+
+      <div class="action-row">
+        <div class="quantity-control">
+          <button (click)="decrementQuantity()">−</button>
+          <span>{{ quantity() }}</span>
+          <button (click)="incrementQuantity()">+</button>
+        </div>
+        <button class="add-btn" (click)="addToOrder()">
+          {{ added() ? 'Added to Order ✓' : 'Add to Order' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-details">
+    <h2>Product Details</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td>Category</td>
+          <td>{{ p.category }}</td>
+        </tr>
+        @if (p.brand) {
+          <tr>
+            <td>Brand</td>
+            <td>{{ p.brand }}</td>
+          </tr>
+        }
+        @if (p.packSize) {
+          <tr>
+            <td>Pack Size</td>
+            <td>{{ p.packSize }}</td>
+          </tr>
+        }
+        @if (p.weight) {
+          <tr>
+            <td>Weight</td>
+            <td>{{ p.weight }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

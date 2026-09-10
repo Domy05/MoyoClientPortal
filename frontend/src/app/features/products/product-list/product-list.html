@@ -1,0 +1,147 @@
+<div class="page-header">
+  <h1>Products</h1>
+  <p>Browse our wide range of office and business supplies.</p>
+</div>
+
+<div class="filter-pills">
+  @for (filter of filters; track filter) {
+    <button
+      class="pill"
+      [class.active]="selectedFilter() === filter"
+      (click)="selectFilter(filter)"
+    >
+      {{ filter }}
+    </button>
+  }
+</div>
+
+@if (loading()) {
+
+  <p class="loading-text">Loading products...</p>
+
+} @else {
+
+  @if (filteredProducts().length === 0) {
+
+    <div class="empty-products">
+      <p>No products found in this category.</p>
+    </div>
+
+  } @else {
+
+    <div class="product-grid">
+
+      @for (product of paginatedProducts(); track product.id) {
+
+        <div
+          class="product-card"
+          [routerLink]="['/products', product.id]"
+        >
+
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+            class="product-image"
+          />
+
+          <div class="product-info">
+
+            <h3>{{ product.name }}</h3>
+
+            <p class="price">
+              R {{ product.price.toFixed(2) }}
+            </p>
+
+            <p class="stock">
+              {{ product.stock }} in stock
+            </p>
+
+            <div
+              class="quantity-row"
+              (click)="$event.stopPropagation()"
+            >
+
+              <div class="quantity-control">
+
+                <button
+                  (click)="decrementQuantity(product.id)"
+                >
+                  −
+                </button>
+
+                <span>
+                  {{ getQuantity(product.id) }}
+                </span>
+
+                <button
+                  (click)="incrementQuantity(product.id)"
+                >
+                  +
+                </button>
+
+              </div>
+
+              <button
+                class="add-btn"
+                (click)="addToOrder(product.id); $event.stopPropagation()"
+              >
+                {{
+                  addedFeedback()[product.id]
+                    ? 'Added ✓'
+                    : 'Add to Order'
+                }}
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+    @if (totalPages() > 1) {
+
+      <div class="pagination">
+
+        <button
+          class="pagination-btn"
+          [disabled]="currentPage() === 1"
+          (click)="previousPage()"
+        >
+          ← Previous
+        </button>
+
+        <div class="page-numbers">
+
+          @for (page of pageNumbers(); track page) {
+
+            <button
+              class="page-number"
+              [class.active]="currentPage() === page"
+              (click)="goToPage(page)"
+            >
+              {{ page }}
+            </button>
+
+          }
+
+        </div>
+
+        <button
+          class="pagination-btn"
+          [disabled]="currentPage() === totalPages()"
+          (click)="nextPage()"
+        >
+          Next →
+        </button>
+
+      </div>
+
+    }
+
+  }
+
+}

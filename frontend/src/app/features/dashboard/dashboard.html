@@ -1,0 +1,80 @@
+<div class="hero">
+  <img src="images/moyo-office.png" alt="Dashboard banner" class="hero-image" />
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1>Good morning, John</h1>
+    <p>Here's a quick overview of your account.</p>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+        <rect x="3" y="7" width="18" height="13" rx="2"/>
+        <path d="M8 7V5a4 4 0 0 1 8 0v2"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <p class="label">Total Orders (this month)</p>
+      <p class="value">{{ totalOrders() }}</p>
+      <a routerLink="/orders" class="link">View orders →</a>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7v5l3 3"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <p class="label">Pending Orders</p>
+      <p class="value">{{ pendingOrders() }}</p>
+      <a routerLink="/orders" class="link">View orders →</a>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+        <rect x="3" y="7" width="18" height="13" rx="2"/>
+        <path d="M3 7l9 6 9-6"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <p class="label">Available Products</p>
+      <p class="value">248</p>
+      <a routerLink="/products" class="link">Browse products →</a>
+    </div>
+  </div>
+</div>
+
+<div class="recent-orders">
+  <div class="section-header">
+    <h2>Recent Orders</h2>
+    <a routerLink="/orders" class="link">View all orders →</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Order #</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of recentOrders(); track order.id) {
+        <tr>
+          <td>ORD-{{ order.id.substring(0, 8).toUpperCase() }}</td>
+          <td>{{ order.createdAt | date: 'yyyy-MM-dd' }}</td>
+          <td><span class="status-badge" [class]="order.status">{{ order.status }}</span></td>
+          <td>{{ getOrderTotal(order) | currency: 'ZAR' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

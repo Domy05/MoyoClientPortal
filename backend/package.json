@@ -1,0 +1,9 @@
+{
+  "name": "moyoclientportal-backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "dotnet test ../backend.Tests/ClientPortal.Api.Tests.csproj",
+    "test:coverage": "dotnet test ../backend.Tests/ClientPortal.Api.Tests.csproj --collect:\"XPlat Code Coverage\""
+  }
+}
